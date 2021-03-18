@@ -20,12 +20,13 @@ logger = logging.getLogger()
 
 app.config.supress_callback_exceptions=True
 
-bwypy.set_options(database='Bookworm2016', endpoint='https://bookworm.htrc.illinois.edu/cgi-bin/dbbindings.py')
-bw_map = bwypy.BWQuery(verify_fields=False)
+#bwypy.set_options(database='Bookworm2016', endpoint='https://bookworm.htrc.illinois.edu/cgi-bin/dbbindings.py')
+bwypy.set_options(database='50K_test', endpoint='http://localhost:10012/cgi-bin/wsgi.py')
+bw_map = bwypy.BWQuery(verify_fields=False,verify_cert=False)
 bw_map.counttype = ['WordsPerMillion']
 bw_map.json['words_collation'] = 'case_insensitive'
 
-bw_html = bwypy.BWQuery(verify_fields=False)
+bw_html = bwypy.BWQuery(verify_fields=False,verify_cert=False)
 bw_html.json['method'] = 'search_results'
 bw_html.json['words_collation'] = 'case_insensitive'
 

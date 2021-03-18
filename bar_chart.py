@@ -14,8 +14,9 @@ import bwypy
 
 app.config.supress_callback_exceptions=True
 
-bwypy.set_options(database='Bookworm2016', endpoint='https://bookworm.htrc.illinois.edu/cgi-bin/dbbindings.py')
-bw = bwypy.BWQuery(verify_fields=False)
+#bwypy.set_options(database='Bookworm2016', endpoint='https://bookworm.htrc.illinois.edu/cgi-bin/dbbindings.py')
+bwypy.set_options(database='50K_test', endpoint='http://localhost:10012/cgi-bin/wsgi.py')
+bw = bwypy.BWQuery(verify_fields=False,verify_cert=False)
 
 facet_opts = get_facet_group_options(bw)
 
@@ -27,7 +28,7 @@ def get_results(group):
     bw.search_limits = { group + '__id' : {"$lt": 60 } }
     return bw.run()
 
-bw_date = bwypy.BWQuery(verify_fields=False)
+bw_date = bwypy.BWQuery(verify_fields=False,verify_cert=False)
 
 @functools.lru_cache(maxsize=32)
 def get_date_distribution(group, facet):
@@ -49,7 +50,7 @@ Select a field and see the raw counts in the Bookworm database
 controls = html.Div([
         dcc.Markdown(header),
         html.Label("Facet Group"),
-        dcc.Dropdown(id='group-dropdown', options=facet_opts, value='language'),
+        dcc.Dropdown(id='group-dropdown', options=facet_opts, value='languages'),
         html.Label("Number of results to show"),
         dcc.Slider(id='trim-slider', min=10, max=60, value=20, step=5,
                    marks={str(n): str(n) for n in range(10, 61, 10)}),

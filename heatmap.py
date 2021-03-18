@@ -23,12 +23,13 @@ logger = logging.getLogger()
 
 app.config.supress_callback_exceptions=True
 
-bwypy.set_options(database='Bookworm2016', endpoint='https://bookworm.htrc.illinois.edu/cgi-bin/dbbindings.py')
-bw_heatmap = bwypy.BWQuery(verify_fields=False)
+#bwypy.set_options(database='Bookworm2016', endpoint='https://bookworm.htrc.illinois.edu/cgi-bin/dbbindings.py')
+bwypy.set_options(database='50K_test', endpoint='http://localhost:10012/cgi-bin/wsgi.py')
+bw_heatmap = bwypy.BWQuery(verify_fields=False,verify_cert=False)
 bw_heatmap.counttype = ['WordsPerMillion']
 bw_heatmap.json['words_collation'] = 'case_insensitive'
 
-bw_html = bwypy.BWQuery(verify_fields=False)
+bw_html = bwypy.BWQuery(verify_fields=False,verify_cert=False)
 bw_html.json['method'] = 'search_results'
 bw_html.json['words_collation'] = 'case_insensitive'
 
@@ -118,7 +119,7 @@ app.layout = html.Div([
                 ),
                 html.Div(
                     [html.Label("Facet by:"),
-                     dcc.Dropdown(id='group-dropdown', options=facet_opts, value='class')
+                     dcc.Dropdown(id='group-dropdown', options=facet_opts, value='lc_classes')
                     ]
                 ),
                 html.Div(
@@ -171,6 +172,7 @@ def set_facet_value_options(facet):
             return w[:n]+'…'
         else:
             return w
+    logging.debug(bw_heatmap.field_values(facet, 40))
     return [{'label': trim(x), 'value': x} for x in bw_heatmap.field_values(facet, 40) if x.strip() != '']
 
 @app.callback(
