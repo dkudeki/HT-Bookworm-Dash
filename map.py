@@ -20,8 +20,10 @@ logger = logging.getLogger()
 
 app.config.supress_callback_exceptions=True
 
-#bwypy.set_options(database='Bookworm2016', endpoint='https://bookworm.htrc.illinois.edu/cgi-bin/dbbindings.py')
-bwypy.set_options(database='50K_test', endpoint='http://localhost:10012/cgi-bin/wsgi.py')
+with open('config.json','r') as options_file:
+    bwypy_options = json.load(options_file)
+
+bwypy.set_options(database=bwypy_options['settings']['dbname'], endpoint=bwypy_options['settings']['endpoint'])
 bw_map = bwypy.BWQuery(verify_fields=False,verify_cert=False)
 bw_map.counttype = ['WordsPerMillion']
 bw_map.json['words_collation'] = 'case_insensitive'
