@@ -15,12 +15,18 @@ server = app.server
 page_info = [
     {"name":"Bar Chart", "slug":"bar", "path":'bar_chart' },
     {"name":"Map Search", "slug":"map", "path":'map' },
-    {"name":"Heat Map", "slug":"heatmap", "path":'heatmap' }
+    {"name":"Heat Map", "slug":"heatmap", "path":'heatmap' },
 ]
 pages = { page['slug']: load_page(page['path']+'.py') for page in page_info }
 
+with open('config.json','r') as options_file:
+    header_options = json.load(options_file)
+
 header_bar = html.Nav(className='navbar navbar-dark bg-dark navbar-expand-lg', children=[
             dcc.Link("Bookworm Playground", href=app.url_base_pathname, className="navbar-brand", style=dict(color='#fff')),
+            html.Ul(className="navbar-nav", children=
+                    [html.A("Line Chart", href=header_options['settings']['linechart'], className='nav-link nav-item active')]
+                   ),
             html.Ul(className="navbar-nav", children=
                     [html.Li(
                         dcc.Link(page['name'], href=app.url_base_pathname+page['slug'], className='nav-link'), className='nav-item active'
@@ -28,7 +34,9 @@ header_bar = html.Nav(className='navbar navbar-dark bg-dark navbar-expand-lg', c
                    )
     ])
 
-footer = '''This is an set of experimental tools for exploring [HathiTrust+Bookworm Project](https://analytics.hathitrust.org/bookworm).
+
+footer = '''
+This is an set of experimental tools for exploring [HathiTrust+Bookworm Project](https://analytics.hathitrust.org/bookworm).
 
 See the main HT+BW visualization at the [HathiTrust Research Center](https://analytics.hathitrust.org/bookworm).
             For expert use, there is an [advanced visualization page](https://bookworm.htrc.illinois.edu/advanced).
