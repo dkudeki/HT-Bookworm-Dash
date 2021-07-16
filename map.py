@@ -54,7 +54,7 @@ state_codes = pd.read_csv('data/state_codes_us.csv')
 @functools.lru_cache(maxsize=32)
 def get_word_by_us_state(word):
     words = [token.strip() for token in word.split(',')]
-    bw_map.search_limits = { 'word':word.split(','), 'publication_country': 'USA' }
+    bw_map.search_limits = { 'word':word.split(','), 'publication_country': 'United States' }
     bw_map.groups = ['*publication_country', 'publication_state']
     results = bw_map.run()
     df = results.frame(index=False, drop_unknowns=True)
