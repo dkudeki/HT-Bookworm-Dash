@@ -66,7 +66,7 @@ def format_heatmap_data(data, word, log, smoothing, soft_min_year, soft_max_year
     if log:
         data.WordsPerMillion = data.WordsPerMillion.add(1).apply(np.log)
     if (facet_query is not None) and (len(facet_query) != 0):
-        data = data[data[facet].isin(list(facet_query))]
+       data = data[data[facet].isin(list(facet_query))]
     years = pd.Series(range(soft_min_year,soft_max_year))
     fullyears = pd.Series(range(data.date_year.min(),data.date_year.max()))
     all_keys = pd.DataFrame(list(itertools.product(data[facet].unique(), fullyears)), columns=[facet, 'date_year'])
