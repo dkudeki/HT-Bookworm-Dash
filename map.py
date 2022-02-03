@@ -287,4 +287,4 @@ def map_search(word_query, maptype, mapscope):
 
 if __name__ == '__main__':
     app.config.supress_callback_exceptions = True
-    app.run_server(debug=True, port=8080, threaded=True, host='0.0.0.0')
+    app.run_server(debug=True, port=10012, threaded=True, host='0.0.0.0')

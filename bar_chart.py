@@ -175,4 +175,4 @@ def print_hover_data(clickData, group):
 if __name__ == '__main__':
     # app.scripts.config.serve_locally = False
     app.config.supress_callback_exceptions = True
-    app.run_server(debug=True, port=8080, threaded=True, host='0.0.0.0')
+    app.run_server(debug=True, port=10012, threaded=True, host='0.0.0.0')
