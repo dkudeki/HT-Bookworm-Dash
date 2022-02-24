@@ -24,6 +24,7 @@ logging_config = dict(
         'level': logging.DEBUG,
         },
 )
+logger = logging.getLogger()
 
 def load_page(path):
     with open(path, 'r') as _f:
@@ -58,6 +59,7 @@ def pretty_facet(name):
     return name.replace('_', ' ').title()
 
 def get_facet_group_options(bw):
+    logger.debug(bw.fields().query("type == 'character'").name)
     options = [{'label': pretty_facet(name), 'value': name} for name in 
                   bw.fields().query("type == 'character'").name]
     return options
