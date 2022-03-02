@@ -5,7 +5,7 @@ Japan,JPN
 Italy,ITA
 India,IND
 China,CHN
-Russia,RUS
+Russia (Federation),RUS
 Spain,ESP
 Canada,CAN
 Netherlands,NLD
@@ -18,7 +18,7 @@ Argentina,ARG
 Denmark,DNK
 Australia,AUS
 Egypt,EGY
-South Korea,KOR
+Korea (South),KOR
 Israel,ISR
 Indonesia,IDN
 Mexico,MEX
@@ -80,7 +80,7 @@ Iceland,ISL
 Lithuania,LTU
 Kazakhstan,KAZ
 Dominican Republic,DOM
-North Korea,PRK
+Korea (North),PRK
 Guatemala,GTM
 Kuwait,KWT
 Azerbaijan,AZE
@@ -204,9 +204,9 @@ Tokelau,TKL
 Sint Maarten,SXM
 Bouvet Island,BVT
 South Sudan,SSD
-Bosnia and Herzegovina,BIH
+Bosnia and Hercegovina,BIH
 Trinidad and Tobago,TTO
-Congo,COG
+Congo (Brazzaville),COG
 Cabo Verde,CPV
 Saint Pierre and Miquelon,SPM
 Saint Lucia,LCA
@@ -217,13 +217,24 @@ Saint Helena,SHN
 Turks and Caicos Islands,TCA
 United States,USA
 United Kingdom,GBR
-Republic of China,TWN
+China (Republic : 1949- ),TWN
 Soviet Union,SUN
-Democratic Republic of Congo,CON
+Congo (Democratic Republic),CON
 East Germany,DDR
-Republic of Georgia,GEO
+Georgia (Republic),GEO
 Burma,BUR
 Serbia and Montenegro,SCG
 Czechoslovakia,CSK
 Armenia,ARM
 Macao,MAC
+Bermuda Islands,BMU
+Canal Zone,PCZ
+Côte d'Ivoire,CIV
+Germany (East),DDR
+Micronesia (Federated States),FSM
+Netherlands Antilles,ANT
+Réunion,REU
+Saint-Martin,MAF
+Surinam,SUR
+Virgin Islands of the United States,VIR
+West Bank of the Jordan River,PSE
