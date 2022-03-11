@@ -141,6 +141,8 @@ def update_table(group, drop_radio):
 def print_hover_data(clickData, group):
     if clickData:
         facet_value = clickData['points'][0]['x']
+        print(group)
+        print(facet_value)
         df = get_date_distribution(group, facet_value)
         df = df.copy()
         data = [
