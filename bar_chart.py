@@ -9,9 +9,14 @@ import pandas as pd
 import functools
 from common import app
 from common import graphconfig
-from tools import get_facet_group_options
+from tools import get_facet_group_options, logging_config
 import bwypy
 import json
+import logging
+from logging.config import dictConfig
+
+dictConfig(logging_config)
+logger = logging.getLogger()
 
 app.config.supress_callback_exceptions=True
 
@@ -141,8 +146,8 @@ def update_table(group, drop_radio):
 def print_hover_data(clickData, group):
     if clickData:
         facet_value = clickData['points'][0]['x']
-        print(group)
-        print(facet_value)
+        logging.debug(group)
+        logging.debug(facet_value)
         df = get_date_distribution(group, facet_value)
         df = df.copy()
         data = [
