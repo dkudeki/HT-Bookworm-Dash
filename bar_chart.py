@@ -476,7 +476,8 @@ def print_hover_data(clickData, group):
         }
         logging.debug(group)
         logging.debug(facet_value)
-        df = get_date_distribution(group, facet_value)
+        logging.debug(map_to_ld[group][facet_value])
+        df = get_date_distribution(group, map_to_ld[group][facet_value])
         df = df.copy()
         data = [
             go.Scatter(
