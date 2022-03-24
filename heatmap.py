@@ -258,6 +258,10 @@ def heatmap_search(word_query, facet, facet_query, years):
         df = df.copy()
         if not facet_query:
             facet_query = []
+        if facet in ['genres','languages','digitization_agent_code','format','htsource']:
+            with open('data/map_to_human_readable.json','r') as map_to_human_readable_file:
+                map_to_human_readable = json.load(map_to_human_readable_file)
+                facet_query = [ map_to_human_readable[facet][x] for x in facet_query if x in map_to_human_readable[facet] else x ]
         plotdata, layout = format_heatmap_data(df, word, log, smoothing, years[0], years[1], tuple(facet_query))
         fig = dict( data=plotdata, layout=layout )
     except:
