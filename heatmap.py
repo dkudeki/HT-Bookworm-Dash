@@ -57,7 +57,7 @@ def get_heatmap_values(query, facet, max_facet_values=15, hard_min_year=1650, ha
     # Get and format results
     results = bw_heatmap.run()
     df = results.frame(index=False, drop_unknowns=True)
-    map_to_human_readable(df)
+    map_to_human_readable(df,facet)
     df.date_year = df.date_year.astype(float).astype(int)
     df = df[df[facet] != '0']
     return df

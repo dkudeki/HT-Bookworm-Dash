@@ -75,15 +75,18 @@ def errorfig(txt='There was an error! We\'ve logged it and will try to fix it. T
     fig = go.Figure(data=data, layout=layout)
     return fig
 
-def map_to_human_readable(df):
+def map_to_human_readable(df,facet):
     logging.info(df)
     with open('data/map_to_human_readable.json','r') as map_to_human_readable_file:
         map_to_human_readable = json.load(map_to_human_readable_file)
 
-    replace_columns = {}
-    print(df.columns)
-    for facet_key in map_to_human_readable.keys():
-        if facet_key in df.columns:
-            replace_columns[facet_key] = map_to_human_readable[facet_key]
-    if replace_columns:
-        df = df.replace(replace_columns)
+    if facet in map_to_human_readable.keys():
+#        replace_columns = {}
+        print(df.columns)
+#        for facet_key in map_to_human_readable.keys():
+#            if facet_key in df.columns:
+#                replace_columns[facet_key] = map_to_human_readable[facet_key]
+#        if replace_columns:
+        logging.info(df)
+        df = df.replace({ facet: map_to_human_readable[facet] })
+        logging.info(df)
