@@ -9,7 +9,7 @@ import pandas as pd
 import functools
 from common import app
 from common import graphconfig
-from tools import get_facet_group_options, logging_config
+from tools import get_facet_group_options, logging_config, map_to_human_readable
 import bwypy
 import json
 import logging
@@ -45,6 +45,7 @@ def get_date_distribution(group, facet):
     bw_date.search_limits = { group: facet }
     results = bw_date.run()
     df = results.frame(index=False)
+    map_to_human_readable(df)
     df.date_year = pd.to_numeric(df.date_year)
     df2 = df.query('(date_year > 1800) and (date_year < 2016)').sort_values('date_year', ascending=True)
     df2['smoothed'] = df2.TextCount.rolling(10, 0).mean()
@@ -104,6 +105,7 @@ def update_figure(group, trim_at, drop_radio, counttype):
     results = get_results(group)
 
     df = results.frame(index=False, drop_unknowns=(drop_radio=='drop'))
+    map_to_human_readable(df)
     df = df.copy()
     df_trimmed = df.head(trim_at)
         
@@ -129,7 +131,7 @@ def update_figure(group, trim_at, drop_radio, counttype):
 def update_table(group, drop_radio):
     results = get_results(group)
     df = results.frame(index=False, drop_unknowns=(drop_radio=='drop'))
-    logging.info(df)
+    map_to_human_readable(df)
     df = df.copy()
     return FF.create_table(df)
     #return html.Table(
