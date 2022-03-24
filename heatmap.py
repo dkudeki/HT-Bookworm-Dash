@@ -267,6 +267,7 @@ def heatmap_search(word_query, facet, facet_query, years):
                         new_facet_query.append(map_to_human_readable[facet][entry])
                     else:
                         new_facet_query.append(entry)
+                facet_query = new_facet_query
 #                facet_query = [ map_to_human_readable[facet][x] for x in facet_query if x in map_to_human_readable[facet] else x ]
         plotdata, layout = format_heatmap_data(df, word, log, smoothing, years[0], years[1], tuple(facet_query))
         fig = dict( data=plotdata, layout=layout )
