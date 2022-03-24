@@ -3,6 +3,7 @@ import dash_html_components as html
 import dash_core_components as dcc
 import plotly.graph_objs as go
 import logging
+import json
 
 logging_config = dict(
     version = 1,
@@ -77,7 +78,7 @@ def errorfig(txt='There was an error! We\'ve logged it and will try to fix it. T
 def map_to_human_readable(df):
     logging.info(df)
     with open('data/map_to_human_readable.json','r') as map_to_human_readable_file:
-        map_to_human_readable = jsonlib.load(map_to_human_readable_file)
+        map_to_human_readable = json.load(map_to_human_readable_file)
 
     replace_columns = {}
     print(df.columns)
