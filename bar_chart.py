@@ -129,6 +129,7 @@ def update_figure(group, trim_at, drop_radio, counttype):
 def update_table(group, drop_radio):
     results = get_results(group)
     df = results.frame(index=False, drop_unknowns=(drop_radio=='drop'))
+    logging.info(df)
     df = df.copy()
     return FF.create_table(df)
     #return html.Table(
