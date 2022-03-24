@@ -157,7 +157,7 @@ def print_hover_data(clickData, group):
             try:
                 df = get_date_distribution(group, map_to_ld[group][facet_value])
             except:
-                df = get_date_distribution(group, facet_value)
+                pass
         else:
             df = get_date_distribution(group, facet_value)
         df = df.copy()
