@@ -152,10 +152,12 @@ def print_hover_data(clickData, group):
 
         with open('data/map_to_ld.json','r') as map_to_ld_file:
             map_to_ld = json.load(map_to_ld_file)
-        logging.debug(map_to_ld)
 
         if group in map_to_ld:
-            df = get_date_distribution(group, map_to_ld[group][facet_value])
+            try:
+                df = get_date_distribution(group, map_to_ld[group][facet_value])
+            except:
+                df = get_date_distribution(group, facet_value)
         else:
             df = get_date_distribution(group, facet_value)
         df = df.copy()
