@@ -177,9 +177,17 @@ def set_facet_value_options(facet):
             return w
     logging.debug(bw_heatmap.field_values(facet, 40))
     if facet in ['genres','languages','digitization_agent_code','format','htsource']:
-            with open('data/map_to_human_readable.json','r') as map_to_human_readable_file:
-                map_to_human_readable = json.load(map_to_human_readable_file)
-                return [{'label': map_to_human_readable[facet][trim(x)], 'value': x} for x in bw_heatmap.field_values(facet, 40) if x.strip() != '']
+        with open('data/map_to_human_readable.json','r') as map_to_human_readable_file:
+            map_to_human_readable = json.load(map_to_human_readable_file)
+            return_values = []
+            for x in bw_heatmap.field_values(facet, 40):
+                if x.strip() != '':
+                    logging.info(x)
+                    logging.info(trim(x))
+                    logging.info(map_to_human_readable[facet])
+                    logging.info(map_to_human_readable[facet][trim(x)])
+#                    label = map_to_human_readable[facet][trim(x)]
+            return [{'label': map_to_human_readable[facet][trim(x)], 'value': x} for x in bw_heatmap.field_values(facet, 40) if x.strip() != '']
     else:
         return [{'label': trim(x), 'value': x} for x in bw_heatmap.field_values(facet, 40) if x.strip() != '']
 
