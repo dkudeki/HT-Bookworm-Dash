@@ -176,7 +176,12 @@ def set_facet_value_options(facet):
         else:
             return w
     logging.debug(bw_heatmap.field_values(facet, 40))
-    return [{'label': trim(x), 'value': x} for x in bw_heatmap.field_values(facet, 40) if x.strip() != '']
+    if facet in ['genres','languages','digitization_agent_code','format','htsource']:
+            with open('data/map_to_human_readable.json','r') as map_to_human_readable_file:
+                map_to_human_readable = json.load(map_to_human_readable_file)
+                return [{'label': map_to_human_readable[facet][trim(x)], 'value': x} for x in bw_heatmap.field_values(facet, 40) if x.strip() != '']
+    else:
+        return [{'label': trim(x), 'value': x} for x in bw_heatmap.field_values(facet, 40) if x.strip() != '']
 
 @app.callback(
     Output("facet-values", "value"),
@@ -266,7 +271,6 @@ def heatmap_search(word_query, facet, facet_query, years):
                     else:
                         new_facet_query.append(entry)
                 facet_query = new_facet_query
-#                facet_query = [ map_to_human_readable[facet][x] for x in facet_query if x in map_to_human_readable[facet] else x ]
         plotdata, layout = format_heatmap_data(df, word, log, smoothing, years[0], years[1], tuple(facet_query))
         fig = dict( data=plotdata, layout=layout )
     except:
