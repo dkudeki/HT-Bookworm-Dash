@@ -186,11 +186,11 @@ def set_facet_value_options(facet):
                     logging.info(trim(x))
                     logging.info(map_to_human_readable[facet])
                     if trim(x) in map_to_human_readable[facet]:
-                        logging.info(map_to_human_readable[facet][trim(x)])
+                        logging.info(map_to_human_readable[facet][x])
                     else:
                         logging.info(trim(x))
 #                    label = map_to_human_readable[facet][trim(x)]
-            return [{'label': map_to_human_readable[facet][trim(x)], 'value': x} if trim(x) in map_to_human_readable[facet] else {'label': trim(x), 'value': x} for x in bw_heatmap.field_values(facet, 40) if x.strip() != '']
+            return [{'label': trim(map_to_human_readable[facet][x]), 'value': x} if trim(x) in map_to_human_readable[facet] else {'label': trim(x), 'value': x} for x in bw_heatmap.field_values(facet, 40) if x.strip() != '']
     else:
         return [{'label': trim(x), 'value': x} for x in bw_heatmap.field_values(facet, 40) if x.strip() != '']
 
