@@ -39,11 +39,12 @@ footer = '''
 This is an set of experimental tools for exploring [HathiTrust+Bookworm Project](https://analytics.hathitrust.org/bookworm).
 
 See the main HT+BW visualization at the [HathiTrust Research Center](https://analytics.hathitrust.org/bookworm).
-            For expert use, there is an [advanced visualization page](https://bookworm.htrc.illinois.edu/advanced).
             Consult the [API documentation](https://bookworm-project.github.io/Docs/API.html) for more information on the Bookworm query language. Finally, if you're looking for tools for quantitative querying of the API, see the [BookwormPython](https://github.com/organisciak/BookwormPython) library.
             
 HT+BW is supported by NEH grant #HK-50176-14. If you have any questions, email [Peter.Organisciak@du.edu](mailto:Peter.Organisciak@du.edu).
             '''
+
+unused_footer = '''         For expert use, there is an [advanced visualization page](https://bookworm.htrc.illinois.edu/advanced).'''
 
 app.layout = html.Div([
         # represents the URL bar, doesn't render anything
