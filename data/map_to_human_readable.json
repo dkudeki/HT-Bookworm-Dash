@@ -312,7 +312,9 @@
         "ucm": "Universidad Complutense de Madrid (ucm)",
         "upenn": "University of Pennsylvania (upenn)",
         "chtanc": "National Central Library of Taiwan (chtanc)",
-        "uq": "The University of Queensland (uq)"
+        "uq": "The University of Queensland (uq)",
+        "miami": "University of Miami (miami)",
+        "asu": "Arizona State University (asu)"
     },
     "format": {
         "http://id.loc.gov/ontologies/bibframe/Text": "Text",
