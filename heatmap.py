@@ -284,7 +284,6 @@ def heatmap_search(word_query, facet, facet_query, years):
                 facet_query = new_facet_query
         plotdata, layout = format_heatmap_data(df, word, log, smoothing, years[0], years[1], tuple(facet_query))
         fig = dict( data=plotdata, layout=layout )
-        fig.update_yaxes(automargin=True)
     except:
         logging.exception(json.dumps(dict(page='heatmap', word_query=word_query, facet=facet,
                                       facet_query=facet_query, years=years)))
