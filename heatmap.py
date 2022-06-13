@@ -92,7 +92,8 @@ def format_heatmap_data(data, word, log, smoothing, soft_min_year, soft_max_year
        ]
     
     layout = go.Layout(
-        title='"%s" by %s' % (word, pretty_facet(facet))
+        title='"%s" by %s' % (word, pretty_facet(facet)),
+        yaxis={'automargin': True}
     )
 
     return (data, layout)
