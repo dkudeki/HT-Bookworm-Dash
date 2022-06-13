@@ -61,7 +61,7 @@ def pretty_facet(name):
 def get_facet_group_options(bw):
     print(bw.fields().query("type == 'character'").name)
     options = [{'label': pretty_facet(name), 'value': name} for name in 
-                  bw.fields().query("type == 'character'").name]
+                  bw.fields().query("type == 'character'").name if name != 'is_gov_doc']
     return options
 
 def errorfig(txt='There was an error! We\'ve logged it and will try to fix it. Try something else!'): 
