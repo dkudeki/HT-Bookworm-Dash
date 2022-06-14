@@ -324,7 +324,10 @@
         "http://id.loc.gov/ontologies/bibframe/NotatedMusic http://id.loc.gov/ontologies/bibframe/Audio": "NotatedMusic Audio",
         "http://id.loc.gov/ontologies/bibframe/MixedMaterial": "MixedMaterial",
         "http://id.loc.gov/ontologies/bibframe/StillImage": "StillImage",
-        "http://id.loc.gov/ontologies/bibframe/Audio": "Audio"
+        "http://id.loc.gov/ontologies/bibframe/Audio": "Audio",
+        "Book": "Book",
+        "PublicationVolume": "PublicationVolume",
+        "CreativeWork": "CreativeWork"
     },
     "htsource": {
         "MIU": "University of Michigan (MIU)",
