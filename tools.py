@@ -76,10 +76,13 @@ def errorfig(txt='There was an error! We\'ve logged it and will try to fix it. T
     return fig
 
 def map_to_human_readable(df,facet):
+    print("Loading JSON map")
     with open('data/map_to_human_readable.json','r') as map_to_human_readable_file:
         map_to_human_readable = json.load(map_to_human_readable_file)
 
+    print("Applying map")
     if facet in map_to_human_readable.keys():
         df = df.replace({ facet: map_to_human_readable[facet] })
 
+    print("Map completed")
     return df
