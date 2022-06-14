@@ -103,11 +103,12 @@ app.layout = html.Div([
 def update_figure(group, trim_at, drop_radio, counttype):
     bw.groups = [group]
     results = get_results(group)
-    print("Results for new figure:")
-    print(results)
+    logging.debug("Results for new figure:")
+    logging.debug(results)
 
     df = results.frame(index=False, drop_unknowns=(drop_radio=='drop'))
     df = map_to_human_readable(df,group)
+    logging.debug("Ran map to human readable")
     df = df.copy()
     df_trimmed = df.head(trim_at)
         
