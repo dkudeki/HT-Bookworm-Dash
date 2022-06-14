@@ -102,6 +102,8 @@ app.layout = html.Div([
 )
 def update_figure(group, trim_at, drop_radio, counttype):
     bw.groups = [group]
+    logging.debug("Groups:")
+    logging.debug(bw.groups)
     results = get_results(group)
     logging.debug("Results for new figure:")
     logging.debug(results)
