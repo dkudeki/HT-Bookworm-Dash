@@ -111,8 +111,12 @@ def update_figure(group, trim_at, drop_radio, counttype):
     df = results.frame(index=False, drop_unknowns=(drop_radio=='drop'))
     logging.debug("Created DataFrame of results")
 #    loggind.debug(df)
-    df = map_to_human_readable(df,group)
-    logging.debug("Ran map to human readable")
+    try:
+        df = map_to_human_readable(df,group)
+        logging.debug("Ran map to human readable")
+    except Exception as e:
+        logging.error("ERROR occured!")
+        logging.error(e)
     df = df.copy()
     df_trimmed = df.head(trim_at)
         
