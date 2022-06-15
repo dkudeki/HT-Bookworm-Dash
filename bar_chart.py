@@ -110,7 +110,7 @@ def update_figure(group, trim_at, drop_radio, counttype):
 
     df = results.frame(index=False, drop_unknowns=(drop_radio=='drop'))
     logging.debug("Created DataFrame of results")
-#    loggind.debug(df)
+    logging.debug(df)
     try:
         df = map_to_human_readable(df,group)
         logging.debug("Ran map to human readable")
