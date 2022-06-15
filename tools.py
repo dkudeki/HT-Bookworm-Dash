@@ -82,7 +82,8 @@ def map_to_human_readable(df,facet):
 
     print("Applying map")
     if facet in map_to_human_readable.keys():
-        df = df.replace({ facet: map_to_human_readable[facet] })
+#        df = df.replace({ facet: map_to_human_readable[facet] })
+        df[facet] = df[facet].applymap(lambda x: map_to_human_readable[facet][x])
 
     print("Map completed")
     return df
