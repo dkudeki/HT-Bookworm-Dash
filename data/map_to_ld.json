@@ -325,9 +325,9 @@
         "MixedMaterial": "http://id.loc.gov/ontologies/bibframe/MixedMaterial",
         "StillImage": "http://id.loc.gov/ontologies/bibframe/StillImage",
         "Audio": "http://id.loc.gov/ontologies/bibframe/Audio",
-        "Book": "Book",
-        "PublicationVolume": "PublicationVolume",
-        "CreativeWork": "CreativeWork"
+        "book": "Book",
+        "publicationVolume": "PublicationVolume",
+        "creativeWork": "CreativeWork"
     },
     "htsource": {
         "University of Michigan (MIU)": "MIU",
