@@ -47,8 +47,15 @@ def get_date_distribution(group, facet):
     df = results.frame(index=False)
     logging.debug("Got date distribution")
     logging.debug(df)
-    df = map_to_human_readable(df,group)
+    try:
+        df = map_to_human_readable(df,group)
+        logging.debug("Ran map to human readable")
+        logging.debug(df)
+    except Exception as e:
+        logging.error("ERROR with date distribution")
+        logging.error(e)
     df.date_year = pd.to_numeric(df.date_year)
+    logging.debug("Converted dates to numberic")
     df2 = df.query('(date_year > 1800) and (date_year < 2016)').sort_values('date_year', ascending=True)
     df2['smoothed'] = df2.TextCount.rolling(10, 0).mean()
     return df2
