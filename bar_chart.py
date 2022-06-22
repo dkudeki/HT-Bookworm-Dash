@@ -55,7 +55,7 @@ def get_date_distribution(group, facet):
         logging.error("ERROR with date distribution")
         logging.error(e)
     df.date_year = pd.to_numeric(df.date_year)
-    logging.debug("Converted dates to numberic")
+    logging.debug("Converted dates to numeric")
     df2 = df.query('(date_year > 1800) and (date_year < 2016)').sort_values('date_year', ascending=True)
     df2['smoothed'] = df2.TextCount.rolling(10, 0).mean()
     return df2
