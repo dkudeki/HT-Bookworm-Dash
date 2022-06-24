@@ -262,10 +262,10 @@ def display_click_data(clickData, word, compare_word, mapscope):
 @app.callback(
     Output('map-search-term-hidden', 'value'),
     Output('word_search_button','disabled'),
-    events=[Event('word_search_button', 'click')],
+    [Input('word_search_button', 'n_clicks')],
     state=[State('search-term', 'value'), State('compare-term', 'value')]
 )
-def update_hidden_search_term(word, compare):
+def update_hidden_search_term(n_clicks, word, compare):
     return json.dumps(dict(word=word, compare=compare)), True
 
 @app.callback(
