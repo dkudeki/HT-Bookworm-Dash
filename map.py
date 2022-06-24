@@ -188,7 +188,7 @@ app.layout = html.Div([
                             style={'color': 'navy','font-weight':'bold'})],
                     className="form-group"
                 ),
-                html.Button('Update Words', id='word_search_button', className='btn btn-primary'),
+                html.Button('Update Words', id='word_search_button', className='btn btn-primary', disabled=False),
                 html.Div(
                     [html.Label("Type of Map"),
                      html.Div(dcc.RadioItems(
@@ -261,14 +261,16 @@ def display_click_data(clickData, word, compare_word, mapscope):
 
 @app.callback(
     Output('map-search-term-hidden', 'value'),
+    Output('word_search_button','disabled'),
     events=[Event('word_search_button', 'click')],
     state=[State('search-term', 'value'), State('compare-term', 'value')]
 )
 def update_hidden_search_term(word, compare):
-    return json.dumps(dict(word=word, compare=compare))
+    return json.dumps(dict(word=word, compare=compare)), True
 
 @app.callback(
     Output('main-map-graph', 'figure'),
+    Output('word_search_button','disabled'),
     [Input('map-search-term-hidden', 'value'),
            Input('map_type', 'value'), Input('map_scope', 'value')]
 )
@@ -283,7 +285,7 @@ def map_search(word_query, maptype, mapscope):
         logging.exception(json.dumps(dict(page='map', word_query=word_query,
                                           maptype=maptype, mapscope=mapscope)))
         fig = errorfig()
-    return fig
+    return fig, False
 
 if __name__ == '__main__':
     app.config.supress_callback_exceptions = True
