@@ -59,7 +59,7 @@ def pretty_facet(name):
     return name.replace('_', ' ').title()
 
 def get_facet_group_options(bw):
-    print(bw.fields().query("type == 'character'").name)
+#    print(bw.fields().query("type == 'character'").name)
     options = [{'label': pretty_facet(name), 'value': name} for name in 
                   bw.fields().query("type == 'character'").name if name != 'is_gov_doc']
     return options
