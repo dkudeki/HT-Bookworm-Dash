@@ -204,8 +204,8 @@ def set_facet_value_defaults(options):
 @app.callback(
     Output('heatmap-select-data', 'children'),
     [Input('main-heatmap-graph', 'clickData')],
-    state=[State('search-term-hidden', 'value'),
-           State('group-dropdown', 'value')])
+    State('search-term-hidden', 'value'),
+           State('group-dropdown', 'value'))
 def display_click_data(clickData, word_query, facet):
     import re
     word_query=json.loads(word_query)
@@ -245,7 +245,7 @@ def display_year(years):
 @app.callback(
     Output('search-term-hidden', 'value'),
     [Input('word_search_button', 'n_clicks')],
-    state=[State('search-term', 'value'), State('compare-term', 'value')]
+    State('search-term', 'value'), State('compare-term', 'value')
 )
 def update_hidden_search_term(n_clicks, word, compare):
     return json.dumps(dict(word=word, compare=compare))

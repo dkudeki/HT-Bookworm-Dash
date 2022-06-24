@@ -232,8 +232,8 @@ app.layout = html.Div([
 @app.callback(
     Output('select-data', 'children'),
     [Input('main-map-graph', 'clickData')],
-    state=[State('search-term', 'value'), State('compare-term', 'value'),
-           State('map_scope', 'value')])
+    State('search-term', 'value'), State('compare-term', 'value'),
+           State('map_scope', 'value'))
 def display_click_data(clickData, word, compare_word, mapscope):
     import json
     import re
@@ -263,7 +263,7 @@ def display_click_data(clickData, word, compare_word, mapscope):
     Output('map-search-term-hidden', 'value'),
     Output('word_search_button','disabled'),
     [Input('word_search_button', 'n_clicks')],
-    state=[State('search-term', 'value'), State('compare-term', 'value')]
+    State('search-term', 'value'), State('compare-term', 'value')
 )
 def update_hidden_search_term(n_clicks, word, compare):
     return json.dumps(dict(word=word, compare=compare)), True
