@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 10012
 
-CMD [ "gunicorn", "-w", "4", "-t", "1200", "-b", "0.0.0.0:10012", "app:server" ]
+CMD [ "gunicorn", "--preload", "-w", "4", "-t", "1200", "-b", "0.0.0.0:10012", "app:server" ]
