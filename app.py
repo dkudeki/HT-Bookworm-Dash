@@ -68,8 +68,10 @@ def parse_path(pathname):
         params = None
     return params, pathparts
         
-@app.callback(dash.dependencies.Output('page-content', 'children'),
-              [dash.dependencies.Input('url', 'pathname')])
+@app.callback(
+    dash.dependencies.Output('page-content', 'children'),
+    dash.dependencies.Input('url', 'pathname')
+)
 def display_page(pathname):
     try:
         params, pathparts = parse_path(pathname)

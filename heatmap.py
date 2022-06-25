@@ -167,7 +167,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output("facet-values", "options"),
-    [Input('group-dropdown', 'value')]
+    Input('group-dropdown', 'value')
 )
 def set_facet_value_options(facet):
     def trim(w, n=20):
@@ -196,16 +196,17 @@ def set_facet_value_options(facet):
 
 @app.callback(
     Output("facet-values", "value"),
-    [Input("facet-values", "options")]
+    Input("facet-values", "options")
 )
 def set_facet_value_defaults(options):
     return [option['value'] for option in options[:10]]
     
 @app.callback(
     Output('heatmap-select-data', 'children'),
-    [Input('main-heatmap-graph', 'clickData')],
-    [State('search-term-hidden', 'value'),
-           State('group-dropdown', 'value')])
+    Input('main-heatmap-graph', 'clickData'),
+    State('search-term-hidden', 'value'),
+    State('group-dropdown', 'value')
+)
 def display_click_data(clickData, word_query, facet):
     import re
     word_query=json.loads(word_query)
@@ -237,24 +238,26 @@ def display_click_data(clickData, word_query, facet):
 
 @app.callback(
     Output('year-display', 'children'),
-    [Input('year-slider', "value")]
+    Input('year-slider', "value")
 )
 def display_year(years):
     return "%d - %d" % tuple(years)
 
 @app.callback(
     Output('search-term-hidden', 'value'),
-    [Input('word_search_button', 'n_clicks')],
-    [State('search-term', 'value'), State('compare-term', 'value')]
+    Input('word_search_button', 'n_clicks'),
+    State('search-term', 'value'),
+    State('compare-term', 'value')
 )
 def update_hidden_search_term(n_clicks, word, compare):
     return json.dumps(dict(word=word, compare=compare))
 
 @app.callback(
     Output('main-heatmap-graph', 'figure'),
-    [Input('search-term-hidden', 'value'),
-           Input('group-dropdown', 'value'), Input("facet-values", "value"),
-           Input('year-slider', "value")]
+    Input('search-term-hidden', 'value'),
+    Input('group-dropdown', 'value'),
+    Input("facet-values", "value"),
+    Input('year-slider', "value")
 )
 def heatmap_search(word_query, facet, facet_query, years):
     try:

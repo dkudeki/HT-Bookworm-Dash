@@ -106,8 +106,10 @@ app.layout = html.Div([
 
 @app.callback(
     Output('bar-chart-main-graph', 'figure'),
-    [Input('group-dropdown', 'value'), Input('trim-slider', 'value'),
-     Input('drop-radio', 'value'), Input('counttype-dropdown', 'value')]
+    Input('group-dropdown', 'value'),
+    Input('trim-slider', 'value'),
+    Input('drop-radio', 'value'),
+    Input('counttype-dropdown', 'value')
 )
 def update_figure(group, trim_at, drop_radio, counttype):
     bw.groups = [group]
@@ -146,7 +148,8 @@ def update_figure(group, trim_at, drop_radio, counttype):
 
 @app.callback(
     Output('bar-data-table', 'figure'),
-    [Input('group-dropdown', 'value'), Input('drop-radio', 'value')]
+    Input('group-dropdown', 'value'),
+    Input('drop-radio', 'value')
 )
 def update_table(group, drop_radio):
     results = get_results(group)
@@ -167,7 +170,9 @@ def update_table(group, drop_radio):
 
 @app.callback(
     Output('date-distribution', 'figure'),
-    [Input('bar-chart-main-graph', 'hoverData'), Input('group-dropdown', 'value')])
+    Input('bar-chart-main-graph', 'hoverData'),
+    Input('group-dropdown', 'value')
+)
 def print_hover_data(clickData, group):
     if clickData:
         facet_value = clickData['points'][0]['x']
