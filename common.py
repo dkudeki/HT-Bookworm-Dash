@@ -6,7 +6,7 @@ import dash
 import bwypy
 
 app = dash.Dash(url_base_pathname='/app/')
-app.config.supress_callback_exceptions = True
+app.config.suppress_callback_exceptions = True
 
 app.css.append_css({
     "external_url" : "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
