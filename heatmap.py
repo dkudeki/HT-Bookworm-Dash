@@ -21,8 +21,6 @@ from logging.config import dictConfig
 dictConfig(logging_config)
 logger = logging.getLogger()
 
-app.config.supress_callback_exceptions=True
-
 with open('config.json','r') as options_file:
     bwypy_options = json.load(options_file)
 
