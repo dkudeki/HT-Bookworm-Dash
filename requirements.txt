@@ -9,7 +9,7 @@ Flask-SeaSurf==0.2.2
 gunicorn==19.7.1
 ipython-genutils==0.2.0
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.10
 jsonschema==2.6.0
 jupyter-core==4.3.0
 MarkupSafe==1.1.1
