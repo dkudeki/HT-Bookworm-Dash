@@ -5,8 +5,7 @@ A common server than can be imported, rather than indivudally initialized.
 import dash
 import bwypy
 
-app = dash.Dash(url_base_pathname='/app/')
-app.config.suppress_callback_exceptions = True
+app = dash.Dash(url_base_pathname='/app/',suppress_callback_exceptions=True)
 
 app.css.append_css({
     "external_url" : "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
