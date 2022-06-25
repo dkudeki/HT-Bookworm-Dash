@@ -260,8 +260,8 @@ def display_click_data(clickData, word, compare_word, mapscope):
     return html.Ul(links)
 
 @app.callback(
-    Output('map-search-term-hidden', 'value'),
-    Output('word_search_button','disabled'),
+    [Output('map-search-term-hidden', 'value'),
+        Output('word_search_button','disabled')],
     [Input('word_search_button', 'n_clicks')],
     [State('search-term', 'value'), State('compare-term', 'value')]
 )
@@ -269,8 +269,8 @@ def update_hidden_search_term(n_clicks, word, compare):
     return json.dumps(dict(word=word, compare=compare)), True
 
 @app.callback(
-    Output('main-map-graph', 'figure'),
-    Output('word_search_button','disabled'),
+    [Output('main-map-graph', 'figure'),
+        Output('word_search_button','disabled')],
     [Input('map-search-term-hidden', 'value'),
            Input('map_type', 'value'), Input('map_scope', 'value')]
 )
