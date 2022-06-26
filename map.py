@@ -260,7 +260,7 @@ def display_click_data(clickData, word, compare_word, mapscope):
 
 @app.callback(
     Output('map-search-term-hidden', 'value'),
-    Output('word_search_button','disabled'),
+#    Output('word_search_button','disabled'),
     Input('word_search_button', 'n_clicks'),
     State('search-term', 'value'),
     State('compare-term', 'value')
