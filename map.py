@@ -276,11 +276,17 @@ def update_hidden_search_term(n_clicks, word, compare):
 )
 def map_search(word_query, maptype, mapscope):
     try:
+        logging.debug("Step 0")
         word_query=json.loads(word_query)
+        logging.debug("Step 1")
         word = word_query['word']
+        logging.debug("Step 2")
         compare_word = word_query['compare']
+        logging.debug("Step 3")
         plotdata, layout = build_map(word, compare_word, maptype, mapscope)
+        logging.debug("Step 4")
         fig = dict( data=plotdata, layout=layout )
+        logging.debug("Step 5")
     except:
         logging.exception(json.dumps(dict(page='map', word_query=word_query,
                                           maptype=maptype, mapscope=mapscope)))
