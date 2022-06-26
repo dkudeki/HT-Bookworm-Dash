@@ -266,7 +266,7 @@ def display_click_data(clickData, word, compare_word, mapscope):
     State('compare-term', 'value')
 )
 def update_hidden_search_term(n_clicks, word, compare):
-    return json.dumps(dict(word=word, compare=compare)), True
+    return json.dumps(dict(word=word, compare=compare))#, True
 
 @app.callback(
     Output('main-map-graph', 'figure'),
@@ -293,7 +293,7 @@ def map_search(word_query, maptype, mapscope):
         logging.exception(json.dumps(dict(page='map', word_query=word_query,
                                           maptype=maptype, mapscope=mapscope)))
         fig = errorfig()
-    return fig, False
+    return fig#, False
 
 if __name__ == '__main__':
     app.config.supress_callback_exceptions = True
