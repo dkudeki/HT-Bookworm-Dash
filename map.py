@@ -272,11 +272,13 @@ def update_hidden_search_term(n_clicks, word, compare):
     Output('main-map-graph', 'figure'),
 #    Output('word_search_button','disabled'),
     Input('map-search-term-hidden', 'value'),
-    Input('map_type', 'value'), Input('map_scope', 'value')
+    Input('map_type', 'value'),
+    Input('map_scope', 'value')
 )
 def map_search(word_query, maptype, mapscope):
     try:
         logging.debug("Step 0")
+        logging.debug(type(word_query))
         word_query=json.loads(word_query)
         logging.debug("Step 1")
         word = word_query['word']
