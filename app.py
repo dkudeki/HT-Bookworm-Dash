@@ -23,13 +23,13 @@ with open('config.json','r') as options_file:
     header_options = json.load(options_file)
 
 header_bar = html.Nav(className='navbar navbar-dark bg-dark navbar-expand-lg', children=[
-            dcc.Link("Bookworm Playground", href=app.url_base_pathname, className="navbar-brand", style=dict(color='#fff')),
+            dcc.Link("Bookworm Playground", href=app.config["url_base_pathname"], className="navbar-brand", style=dict(color='#fff')),
             html.Ul(className="navbar-nav", children=
                     [html.A("Line Chart", href=header_options['settings']['linechart'], className='nav-link nav-item active')]
                    ),
             html.Ul(className="navbar-nav", children=
                     [html.Li(
-                        dcc.Link(page['name'], href=app.url_base_pathname+page['slug'], className='nav-link'), className='nav-item active'
+                        dcc.Link(page['name'], href=app.config["url_base_pathname"]+page['slug'], className='nav-link'), className='nav-item active'
                     ) for page in page_info]
                    )
     ])
@@ -76,7 +76,7 @@ def display_page(pathname):
     try:
         params, pathparts = parse_path(pathname)
 
-        if not (pathparts[0] == app.url_base_pathname.strip('/')):
+        if not (pathparts[0] == app.config["url_base_pathname"].strip('/')):
             raise Exception('Unknown page')
         if (len(pathparts) == 1):
             return pages['map']
