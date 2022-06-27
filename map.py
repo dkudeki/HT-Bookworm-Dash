@@ -73,7 +73,6 @@ def build_map(word, compare_word=None, type='scattergeo', scope='country'):
     import numpy as np
 
     transform = lambda x: np.log(1+x/maxval)
-    logging.debug("Built transform")
 
     if scope == 'country':
         data = get_word_by_country(word).copy()
@@ -91,7 +90,6 @@ def build_map(word, compare_word=None, type='scattergeo', scope='country'):
         scope = 'usa'
         projection = 'albers usa'
         locationmode = 'USA-states'
-    logging.debug("Built scope")
     
     if compare_word and (compare_word.strip() != ''):
         sizemod = 45
@@ -116,11 +114,9 @@ def build_map(word, compare_word=None, type='scattergeo', scope='country'):
         logcounts = sizemod*counts.apply(transform)
         text = data[field] + '<br> Words Per Million:' + data['WordsPerMillion'].round(2).astype('str')
         title = "\'%s\' in the HathiTrust" % word
-    logging.debug("Handled case where compare word doesn't exist")
         
     if compare_word:
         counts2 = data2['WordsPerMillion'].astype(int)
-    logging.debug("Handled case where compare word does exist")
    
     plotdata = [ dict(
             type=type,
@@ -132,7 +128,6 @@ def build_map(word, compare_word=None, type='scattergeo', scope='country'):
                 line = dict(width=0.5, color='rgb(40,40,40)'),
                 )
             )]
-    logging.debug("Set plotdata")
     
     if type == 'choropleth':
         plotdata[0]['z'] = logcounts
@@ -148,7 +143,6 @@ def build_map(word, compare_word=None, type='scattergeo', scope='country'):
         plotdata[0]['marker']['cauto'] = False
         plotdata[0]['marker']['cmax'] = logcounts.abs().max()
         plotdata[0]['marker']['cmin'] = -logcounts.abs().max()
-    logging.debug("Adjusted plot data")
     
     layout = dict(
             title = title,
@@ -167,7 +161,6 @@ def build_map(word, compare_word=None, type='scattergeo', scope='country'):
                 showlakes = True,
                 lakecolor = 'rgb(255, 255, 255)')
             )
-    logging.debug("Built layout")
     return (plotdata, layout)
 
 app.layout = html.Div([
@@ -284,18 +277,12 @@ def update_hidden_search_term(n_clicks, word, compare):
 )
 def map_search(word_query, maptype, mapscope):
     try:
-        logging.debug("Step 0")
         logging.debug(type(word_query))
         word_query=json.loads(word_query)
-        logging.debug("Step 1")
         word = word_query['word']
-        logging.debug("Step 2")
         compare_word = word_query['compare']
-        logging.debug("Step 3")
         plotdata, layout = build_map(word, compare_word, maptype, mapscope)
-        logging.debug("Step 4")
         fig = dict( data=plotdata, layout=layout )
-        logging.debug("Step 5")
     except:
         logging.exception(json.dumps(dict(page='map', word_query=word_query,
                                           maptype=maptype, mapscope=mapscope)))
