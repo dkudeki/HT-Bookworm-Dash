@@ -270,7 +270,7 @@ def update_hidden_search_term(n_clicks, word, compare):
 
 @app.callback(
     Output('main-map-graph', 'figure'),
-#    Output('word_search_button','disabled'),
+    Output('word_search_button','disabled'),
     Input('word_search_button', 'n_clicks'),
     Input('map-search-term-hidden', 'value'),
     Input('map_type', 'value'),
@@ -281,17 +281,20 @@ def map_search(n_clicks, word_query, maptype, mapscope):
     context_value = dash.callback_context.triggered[0]['value']
     logging.debug(context)
     logging.debug(context_value)
-    try:
-        word_query=json.loads(word_query)
-        word = word_query['word']
-        compare_word = word_query['compare']
-        plotdata, layout = build_map(word, compare_word, maptype, mapscope)
-        fig = dict( data=plotdata, layout=layout )
-    except:
-        logging.exception(json.dumps(dict(page='map', word_query=word_query,
-                                          maptype=maptype, mapscope=mapscope)))
-        fig = errorfig()
-    return fig#, False
+    if word_search_button == 'word_search_button':
+        return None, True
+    else:
+        try:
+            word_query=json.loads(word_query)
+            word = word_query['word']
+            compare_word = word_query['compare']
+            plotdata, layout = build_map(word, compare_word, maptype, mapscope)
+            fig = dict( data=plotdata, layout=layout )
+        except:
+            logging.exception(json.dumps(dict(page='map', word_query=word_query,
+                                              maptype=maptype, mapscope=mapscope)))
+            fig = errorfig()
+        return fig, False
 
 if __name__ == '__main__':
     app.config.supress_callback_exceptions = True
