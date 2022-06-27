@@ -260,12 +260,17 @@ def display_click_data(clickData, word, compare_word, mapscope):
 
 @app.callback(
     Output('map-search-term-hidden', 'value'),
+    Input('main-map-graph', 'figure'),
 #    Output('word_search_button','disabled'),
     Input('word_search_button', 'n_clicks'),
     State('search-term', 'value'),
     State('compare-term', 'value')
 )
-def update_hidden_search_term(n_clicks, word, compare):
+def update_hidden_search_term(figure, n_clicks, word, compare):
+    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
+    context_value = dash.callback_context.triggered[0]['value']
+    logging.debug(context)
+    logging.debug(context_value)
     return json.dumps(dict(word=word, compare=compare))#, True
 
 @app.callback(
