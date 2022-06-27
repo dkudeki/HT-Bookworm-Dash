@@ -281,6 +281,8 @@ def map_search(n_clicks, word_query, maptype, mapscope):
     context_value = dash.callback_context.triggered[0]['value']
     logging.debug(context)
     logging.debug(context_value)
+    logging.debug(n_clicks)
+    logging.debug(word_query)
     if context == 'word_search_button':
         return None, True
     else:
@@ -290,6 +292,7 @@ def map_search(n_clicks, word_query, maptype, mapscope):
             compare_word = word_query['compare']
             plotdata, layout = build_map(word, compare_word, maptype, mapscope)
             fig = dict( data=plotdata, layout=layout )
+            logging.debug(fig)
         except:
             logging.exception(json.dumps(dict(page='map', word_query=word_query,
                                               maptype=maptype, mapscope=mapscope)))
