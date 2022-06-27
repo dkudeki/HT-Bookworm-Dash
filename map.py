@@ -281,7 +281,7 @@ def map_search(n_clicks, word_query, maptype, mapscope):
     context_value = dash.callback_context.triggered[0]['value']
     logging.debug(context)
     logging.debug(context_value)
-    if word_search_button == 'word_search_button':
+    if context == 'word_search_button':
         return None, True
     else:
         try:
