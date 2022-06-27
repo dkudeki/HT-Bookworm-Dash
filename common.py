@@ -6,7 +6,7 @@ import dash
 import dash_bootstrap_components as dbc
 import bwypy
 
-app = dash.Dash(url_base_pathname='/app/',suppress_callback_exceptions=True,external_stylesheets=[dbc.themes.COSMO])
+app = dash.Dash(url_base_pathname='/app/',suppress_callback_exceptions=True,external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.css.append_css({
     "external_url" : "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
