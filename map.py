@@ -260,29 +260,28 @@ def display_click_data(clickData, word, compare_word, mapscope):
 
 @app.callback(
     Output('map-search-term-hidden', 'value'),
-    Input('main-map-graph', 'figure'),
 #    Output('word_search_button','disabled'),
     Input('word_search_button', 'n_clicks'),
     State('search-term', 'value'),
     State('compare-term', 'value')
 )
-def update_hidden_search_term(figure, n_clicks, word, compare):
-    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
-    context_value = dash.callback_context.triggered[0]['value']
-    logging.debug(context)
-    logging.debug(context_value)
+def update_hidden_search_term(n_clicks, word, compare):
     return json.dumps(dict(word=word, compare=compare))#, True
 
 @app.callback(
     Output('main-map-graph', 'figure'),
 #    Output('word_search_button','disabled'),
+    Input('word_search_button', 'n_clicks'),
     Input('map-search-term-hidden', 'value'),
     Input('map_type', 'value'),
     Input('map_scope', 'value')
 )
-def map_search(word_query, maptype, mapscope):
+def map_search(n_clicks, word_query, maptype, mapscope):
+    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
+    context_value = dash.callback_context.triggered[0]['value']
+    logging.debug(context)
+    logging.debug(context_value)
     try:
-        logging.debug(type(word_query))
         word_query=json.loads(word_query)
         word = word_query['word']
         compare_word = word_query['compare']
