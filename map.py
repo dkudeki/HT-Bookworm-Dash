@@ -270,12 +270,12 @@ def update_button(n_clicks,figure):
 #    logging.debug(context_value)
     logging.debug(n_clicks)
     logging.debug(figure)
-    return False
     logging.debug(dash.callback_context.triggered)
 #    if context == 'map-search-term-hidden' or (context == 'word_search_button' and context_value == None):
 #        logging.debug("Enable button")
 #    else:
 #        logging.debug("Disable button")
+    return False
 
 @app.callback(
     Output('map-search-term-hidden', 'value'),
