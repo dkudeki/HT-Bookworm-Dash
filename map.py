@@ -258,23 +258,23 @@ def display_click_data(clickData, word, compare_word, mapscope):
             raise
     return html.Ul(links)
 
-@app.callback(
+#@app.callback(
 #    Output('word_search_button','disabled'),
-    Input('word_search_button', 'n_clicks'),
-    Input('main-map-graph', 'figure')
-)
-def update_button(n_clicks,figure):
-    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
-    context_value = dash.callback_context.triggered[0]['value']
-    logging.debug(context)
-    logging.debug(context_value)
-    logging.debug(n_clicks)
-    logging.debug(word_query)
-    logging.debug(dash.callback_context.triggered)
-    if context == 'map-search-term-hidden' or (context == 'word_search_button' and context_value == None):
-        logging.debug("Enable button")
-    else:
-        logging.debug("Disable button")
+#    Input('word_search_button', 'n_clicks'),
+#    Input('main-map-graph', 'figure')
+#)
+#def update_button(n_clicks,figure):
+#    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
+#    context_value = dash.callback_context.triggered[0]['value']
+#    logging.debug(context)
+#    logging.debug(context_value)
+#    logging.debug(n_clicks)
+#    logging.debug(word_query)
+#    logging.debug(dash.callback_context.triggered)
+#    if context == 'map-search-term-hidden' or (context == 'word_search_button' and context_value == None):
+#        logging.debug("Enable button")
+#    else:
+#        logging.debug("Disable button")
 
 @app.callback(
     Output('map-search-term-hidden', 'value'),
