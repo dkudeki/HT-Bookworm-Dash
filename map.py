@@ -264,9 +264,9 @@ def display_click_data(clickData, word, compare_word, mapscope):
     Input('main-map-graph', 'figure')
 )
 def update_button(n_clicks,figure):
-#    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
-#    context_value = dash.callback_context.triggered[0]['value']
-#    logging.debug(context)
+    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
+    context_value = dash.callback_context.triggered[0]['value']
+    logging.debug(context)
 #    logging.debug(context_value)
     logging.debug(n_clicks)
     logging.debug(figure)
