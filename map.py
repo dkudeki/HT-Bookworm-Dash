@@ -273,9 +273,10 @@ def update_button(n_clicks,figure):
 #    logging.debug(dash.callback_context.triggered)
     if context == 'main-map-graph':
         logging.debug("Enable button")
+        return False
     else:
         logging.debug("Disable button")
-    return False
+        return True
 
 @app.callback(
     Output('map-search-term-hidden', 'value'),
