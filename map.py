@@ -185,7 +185,7 @@ app.layout = html.Div([
                             style={'color': 'navy','font-weight':'bold'})],
                     className="form-group"
                 ),
-                html.Button('Update Words', id='word_search_button', className='btn btn-primary', disabled=False),
+                html.Button('Update Words', id='word_search_button', className='btn btn-primary', disabled=True),
                 html.Div(
                     [html.Label("Type of Map"),
                      html.Div(dcc.RadioItems(
@@ -265,17 +265,10 @@ def display_click_data(clickData, word, compare_word, mapscope):
 )
 def update_button(n_clicks,figure):
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
-#    context_value = dash.callback_context.triggered[0]['value']
     logging.debug(context)
-#    logging.debug(context_value)
-#    logging.debug(n_clicks)
-#    logging.debug(figure)
-#    logging.debug(dash.callback_context.triggered)
     if context == 'main-map-graph':
-        logging.debug("Enable button")
         return False
     else:
-        logging.debug("Disable button")
         return True
 
 @app.callback(
