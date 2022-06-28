@@ -259,11 +259,11 @@ def display_click_data(clickData, word, compare_word, mapscope):
     return html.Ul(links)
 
 @app.callback(
-    Output('word_search_button','disabled'),
+#    Output('word_search_button','disabled'),
     Input('word_search_button', 'n_clicks'),
     Input('main-map-graph', 'figure')
 )
-def update_button():
+def update_button(n_clicks,figure):
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
     context_value = dash.callback_context.triggered[0]['value']
     logging.debug(context)
