@@ -186,7 +186,7 @@ app.layout = html.Div([
                             style={'color': 'navy','font-weight':'bold'})],
                     className="form-group"
                 ),
-                html.Button([dbc.Spinner(size='sm',show_initially=True),'Update Words'], id='word_search_button', className='btn btn-primary', disabled=True),
+                html.Button([dbc.Spinner(size='sm',show_initially=True),' Updating'], id='word_search_button', className='btn btn-primary', disabled=True),
                 html.Div(
                     [html.Label("Type of Map"),
                      html.Div(dcc.RadioItems(
@@ -261,15 +261,16 @@ def display_click_data(clickData, word, compare_word, mapscope):
 
 @app.callback(
     Output('word_search_button','disabled'),
+    Output('word_search_button','children'),
     Input('word_search_button', 'n_clicks'),
     Input('main-map-graph', 'figure')
 )
 def update_button(n_clicks,figure):
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
     if context == 'main-map-graph':
-        return False
+        return False, "Update Words"
     else:
-        return True
+        return True, [dbc.Spinner(size='sm',show_initially=True),' Updating']
 
 @app.callback(
     Output('map-search-term-hidden', 'value'),
