@@ -285,9 +285,7 @@ def map_search(n_clicks, word_query, maptype, mapscope):
     logging.debug(n_clicks)
     logging.debug(word_query)
     logging.debug(dash.callback_context.triggered)
-    if context == 'word_search_button':
-        return None, True
-    else:
+    if context == 'map-search-term-hidden' or (context == 'word_search_button' and context_value == None):
         try:
             word_query=json.loads(word_query)
             word = word_query['word']
@@ -300,6 +298,8 @@ def map_search(n_clicks, word_query, maptype, mapscope):
                                               maptype=maptype, mapscope=mapscope)))
             fig = errorfig()
         return fig, False
+    else:
+        return None, True
 
 if __name__ == '__main__':
     app.config.supress_callback_exceptions = True
