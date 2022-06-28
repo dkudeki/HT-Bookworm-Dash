@@ -266,6 +266,7 @@ def display_click_data(clickData, word, compare_word, mapscope):
     State('compare-term', 'value')
 )
 def update_hidden_search_term(n_clicks, word, compare):
+    logging.debug("Triggered update_hidden_search_term")
     return json.dumps(dict(word=word, compare=compare))#, True
 
 @app.callback(
@@ -283,6 +284,7 @@ def map_search(n_clicks, word_query, maptype, mapscope):
     logging.debug(context_value)
     logging.debug(n_clicks)
     logging.debug(word_query)
+    logging.debug(dash.callback_context.triggered)
     if context == 'word_search_button':
         return None, True
     else:
