@@ -259,7 +259,7 @@ def display_click_data(clickData, word, compare_word, mapscope):
     return html.Ul(links)
 
 @app.callback(
-#    Output('word_search_button','disabled'),
+    Output('word_search_button','disabled'),
     Input('word_search_button', 'n_clicks'),
 #    Input('main-map-graph', 'figure')
 )
@@ -269,6 +269,7 @@ def update_button(n_clicks):
 #    logging.debug(context)
 #    logging.debug(context_value)
     logging.debug(n_clicks)
+    return False
 #    logging.debug(figure)
 #    logging.debug(dash.callback_context.triggered)
 #    if context == 'map-search-term-hidden' or (context == 'word_search_button' and context_value == None):
