@@ -186,7 +186,7 @@ app.layout = html.Div([
                             style={'color': 'navy','font-weight':'bold'})],
                     className="form-group"
                 ),
-                html.Button([dbc.Spinner(size='sm',show_initially=True),' Updating'], id='word_search_button', className='btn btn-primary', disabled=True),
+                html.Button([dbc.Spinner(size='sm',show_initially=True),' Querying...'], id='word_search_button', className='btn btn-primary', disabled=True),
                 html.Div(
                     [html.Label("Type of Map"),
                      html.Div(dcc.RadioItems(
@@ -270,7 +270,7 @@ def update_button(n_clicks,figure):
     if context == 'main-map-graph':
         return False, "Update Words"
     else:
-        return True, [dbc.Spinner(size='sm',show_initially=True),' Updating']
+        return True, [dbc.Spinner(size='sm',show_initially=True),' Querying...']
 
 @app.callback(
     Output('map-search-term-hidden', 'value'),
