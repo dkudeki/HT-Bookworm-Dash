@@ -272,9 +272,9 @@ def update_button():
     logging.debug(word_query)
     logging.debug(dash.callback_context.triggered)
     if context == 'map-search-term-hidden' or (context == 'word_search_button' and context_value == None):
-        pass
+        logging.debug("Enable button")
     else:
-        pass
+        logging.debug("Disable button")
 
 @app.callback(
     Output('map-search-term-hidden', 'value'),
