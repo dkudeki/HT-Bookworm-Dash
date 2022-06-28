@@ -2,6 +2,7 @@
 import dash
 from dash import dcc, html
 from dash.dependencies import  State, Input, Output
+import dash_bootstrap_components as dbc
 import plotly
 import plotly.graph_objs as go
 import pandas as pd
@@ -185,7 +186,7 @@ app.layout = html.Div([
                             style={'color': 'navy','font-weight':'bold'})],
                     className="form-group"
                 ),
-                html.Button('Update Words', id='word_search_button', className='btn btn-primary', disabled=True),
+                html.Button([dbc.Spinner(size='sm',show_initially=True),'Update Words'], id='word_search_button', className='btn btn-primary', disabled=True),
                 html.Div(
                     [html.Label("Type of Map"),
                      html.Div(dcc.RadioItems(
@@ -265,7 +266,6 @@ def display_click_data(clickData, word, compare_word, mapscope):
 )
 def update_button(n_clicks,figure):
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
-    logging.debug(context)
     if context == 'main-map-graph':
         return False
     else:
@@ -294,7 +294,6 @@ def map_search(word_query, maptype, mapscope):
         compare_word = word_query['compare']
         plotdata, layout = build_map(word, compare_word, maptype, mapscope)
         fig = dict( data=plotdata, layout=layout )
-        logging.debug(fig)
     except:
         logging.exception(json.dumps(dict(page='map', word_query=word_query,
                                           maptype=maptype, mapscope=mapscope)))
