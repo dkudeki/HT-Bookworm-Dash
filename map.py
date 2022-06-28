@@ -259,25 +259,11 @@ def display_click_data(clickData, word, compare_word, mapscope):
     return html.Ul(links)
 
 @app.callback(
-    Output('map-search-term-hidden', 'value'),
-#    Output('word_search_button','disabled'),
-    Input('word_search_button', 'n_clicks'),
-    State('search-term', 'value'),
-    State('compare-term', 'value')
-)
-def update_hidden_search_term(n_clicks, word, compare):
-    logging.debug("Triggered update_hidden_search_term")
-    return json.dumps(dict(word=word, compare=compare))#, True
-
-@app.callback(
-    Output('main-map-graph', 'figure'),
     Output('word_search_button','disabled'),
     Input('word_search_button', 'n_clicks'),
-    Input('map-search-term-hidden', 'value'),
-    Input('map_type', 'value'),
-    Input('map_scope', 'value')
+    Input('main-map-graph', 'figure')
 )
-def map_search(n_clicks, word_query, maptype, mapscope):
+def update_button():
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
     context_value = dash.callback_context.triggered[0]['value']
     logging.debug(context)
@@ -286,20 +272,39 @@ def map_search(n_clicks, word_query, maptype, mapscope):
     logging.debug(word_query)
     logging.debug(dash.callback_context.triggered)
     if context == 'map-search-term-hidden' or (context == 'word_search_button' and context_value == None):
-        try:
-            word_query=json.loads(word_query)
-            word = word_query['word']
-            compare_word = word_query['compare']
-            plotdata, layout = build_map(word, compare_word, maptype, mapscope)
-            fig = dict( data=plotdata, layout=layout )
-            logging.debug(fig)
-        except:
-            logging.exception(json.dumps(dict(page='map', word_query=word_query,
-                                              maptype=maptype, mapscope=mapscope)))
-            fig = errorfig()
-        return fig, False
+        pass
     else:
-        return None, True
+        pass
+
+@app.callback(
+    Output('map-search-term-hidden', 'value'),
+    Input('word_search_button', 'n_clicks'),
+    State('search-term', 'value'),
+    State('compare-term', 'value')
+)
+def update_hidden_search_term(n_clicks, word, compare):
+    logging.debug("Triggered update_hidden_search_term")
+    return json.dumps(dict(word=word, compare=compare))
+
+@app.callback(
+    Output('main-map-graph', 'figure'),
+    Input('map-search-term-hidden', 'value'),
+    Input('map_type', 'value'),
+    Input('map_scope', 'value')
+)
+def map_search(word_query, maptype, mapscope):
+    try:
+        word_query=json.loads(word_query)
+        word = word_query['word']
+        compare_word = word_query['compare']
+        plotdata, layout = build_map(word, compare_word, maptype, mapscope)
+        fig = dict( data=plotdata, layout=layout )
+        logging.debug(fig)
+    except:
+        logging.exception(json.dumps(dict(page='map', word_query=word_query,
+                                          maptype=maptype, mapscope=mapscope)))
+        fig = errorfig()
+    return fig
 
 if __name__ == '__main__':
     app.config.supress_callback_exceptions = True
