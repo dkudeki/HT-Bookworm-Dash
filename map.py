@@ -212,7 +212,7 @@ app.layout = html.Div([
                     className="form-group"
                 )
             ],
-            className='col-md-3'),
+            className='col-md-3 px-3'),
         html.Div(
             [dcc.Graph(id='main-map-graph', animate=False, config=graphconfig)],
             className='col-md-9')
