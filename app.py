@@ -21,7 +21,7 @@ pages = { page['slug']: load_page(page['path']+'.py') for page in page_info }
 with open('config.json','r') as options_file:
     header_options = json.load(options_file)
 
-header_bar = html.Nav(class_name='navbar navbar-dark bg-dark navbar-expand-lg px-3', children=[
+header_bar = html.Nav(className='navbar navbar-dark bg-dark navbar-expand-lg px-3', children=[
             dcc.Link("Bookworm Playground", href=app.config["url_base_pathname"], className="navbar-brand", style=dict(color='#fff')),
             html.Ul(className="navbar-nav", children=
                     [html.A("Line Chart", href=header_options['settings']['linechart'], className='nav-link nav-item')]
