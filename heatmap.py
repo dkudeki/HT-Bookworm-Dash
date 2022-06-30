@@ -140,7 +140,7 @@ app.layout = html.Div([
                             marks=None,
                             value=[default_min_year, default_max_year],
                             id='year-slider',
-                            className='py-1 px-0'
+                            className='py-0 px-0'
                         ),
                         html.Span(id='year-display')
                     ],
