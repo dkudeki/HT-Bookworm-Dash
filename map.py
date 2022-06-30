@@ -178,7 +178,7 @@ app.layout = html.Div([
                      html.Br(),
                         html.Small("Combine search words with a comma. Only single word queries supported."),
                             ],
-                    className="form-group"
+                    className="form-group mb-3"
                 ),
                 html.Div(
                     [html.Label("Optional: Compare to another term"),
