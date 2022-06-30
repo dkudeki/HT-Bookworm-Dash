@@ -181,35 +181,37 @@ app.layout = html.Div([
                     className="form-group mb-3"
                 ),
                 html.Div(
-                    [html.Label("Optional: Compare to another term"),
+                    [html.Label("Optional: Compare to another term", className='mb-2'),
                         dcc.Input(id='compare-term', type='text', value=q['compare_word'],
                             style={'color': 'navy','font-weight':'bold'})],
-                    className="form-group"
+                    className="form-group mb-3"
                 ),
                 html.Button([dbc.Spinner(size='sm',show_initially=True),' Querying...'], id='word_search_button', className='btn btn-primary', disabled=True),
                 html.Div(
-                    [html.Label("Type of Map"),
+                    [html.Label("Type of Map", className='mb-2'),
                      html.Div(dcc.RadioItems(
                         id='map_type',
                         options=[
                             {'label': u'Scatter', 'value': 'scattergeo'},
                             {'label': u'Color', 'value': 'choropleth'}
                         ],
-                        value=q['type']
+                        value=q['type'],
+                        labelClassName='mb-2'
                     ), className='radio')],
-                    className="form-group"
+                    className="form-group mb-3"
                 ),
                 html.Div(
-                    [html.Label("Map Scope"),
+                    [html.Label("Map Scope", className='mb-2'),
                      html.Div(dcc.RadioItems(
                         id='map_scope',
                         options=[
                             {'label': u'World', 'value': 'country'},
                             {'label': u'USA', 'value': 'state'}
                         ],
-                        value=q['scope']
-                    ), className='radio')],
-                    className="form-group"
+                        value=q['scope'],
+                        labelClassName='mb-2'
+                    ), className='radio mb-2')],
+                    className="form-group mb-3"
                 )
             ],
             className='col-md-3 px-3'),
