@@ -51,7 +51,7 @@ app.layout = html.Div([
         header_bar,
         html.Div(id='page-content'),
         html.Hr(),
-        html.Div(dcc.Markdown(footer), className='container')
+        html.Div(dcc.Markdown(footer), className='container px-3')
 ])
 
 # Future support for params with /q= at the end
