@@ -169,7 +169,7 @@ app.layout = html.Div([
         html.Div([
                 dcc.Markdown(header),
                 html.Div(
-                    [html.Label("Search For a Term"),
+                    [html.Label("Search For a Term", className='mb-2'),
                         html.Br(),
                         dcc.Input(id='search-term', type='text', value=q['word'],
                             style={'color': 'darkorange','font-weight':'bold'}),
