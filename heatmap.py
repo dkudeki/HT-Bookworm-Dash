@@ -103,7 +103,7 @@ app.layout = html.Div([
                 dcc.Markdown(header),
             
                 html.Div(
-                    [html.Div(html.Label("Search For a Term: ")),
+                    [html.Div(html.Label("Search For a Term: ", className='mb-2')),
                      html.Div(dcc.Input(id='search-term', type='text', value='computer')),
                      dcc.Input(id='search-term-hidden', type='hidden', value=json.dumps(dict(word='computer', compare=''))),
                      html.Small("Combine search words with a comma. Only single word queries supported."),
@@ -115,10 +115,10 @@ app.layout = html.Div([
                         dcc.Input(id='compare-term', type='hidden', value='colour'),
                         html.Button('Update word', id='word_search_button', className='btn btn-primary'),
                     ],
-                    className="form-group"
+                    className="form-group mb-3"
                 ),
                 html.Div(
-                    [html.Label("Facet by:"),
+                    [html.Label("Facet by:",className='mb-2'),
                      dcc.Dropdown(id='group-dropdown', options=facet_opts, value='lc_classes')
                     ]
                 ),
@@ -131,7 +131,7 @@ app.layout = html.Div([
                 ),
                 html.Div(
                     [
-                        html.Label("Select Years"),
+                        html.Label("Select Years", className='mb-2'),
                         dcc.RangeSlider(
                             count=1,
                             min=hard_min_year,
@@ -139,7 +139,8 @@ app.layout = html.Div([
                             step=1,
                             marks=None,
                             value=[default_min_year, default_max_year],
-                            id='year-slider'
+                            id='year-slider',
+                            className='py-1'
                         ),
                         html.Span(id='year-display')
                     ],
@@ -147,7 +148,7 @@ app.layout = html.Div([
                 ),
                 html.Br()
             ],
-            className='col-md-3'),
+            className='col-md-3 px-3'),
         html.Div(
             [dcc.Graph(id='main-heatmap-graph', animate=False, config=graphconfig)],
             className='col-md-9')
