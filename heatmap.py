@@ -258,6 +258,7 @@ def display_year(years):
 )
 def update_button(n_clicks,facet,figure):
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
+    logging.debug(dash.callback_context.triggered)
     logging.debug(context)
     if context == 'main-heatmap-graph':
         return False, False, False, "Update word"
