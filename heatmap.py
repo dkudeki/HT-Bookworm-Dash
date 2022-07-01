@@ -113,7 +113,7 @@ app.layout = html.Div([
                     [
                         html.Label("Optional: Compare to another term", style={'display':'None'}),
                         dcc.Input(id='compare-term', type='hidden', value='colour'),
-                        html.Button('Update word', id='word_search_button', className='btn btn-primary'),
+                        html.Button([dbc.Spinner(size='sm',show_initially=True),' Querying...'], id='word_search_button', className='btn btn-primary', disabled=True),
                     ],
                     className="form-group mb-3"
                 ),
@@ -241,6 +241,19 @@ def display_click_data(clickData, word_query, facet):
 )
 def display_year(years):
     return "%d - %d" % tuple(years)
+
+@app.callback(
+    Output('word_search_button','disabled'),
+    Output('word_search_button','children'),
+    Input('word_search_button', 'n_clicks'),
+    Input('main-heatmap-graph', 'figure')
+)
+def update_button(n_clicks,figure):
+    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
+    if context == 'main-heatmap-graph':
+        return False, "Update word"
+    else:
+        return True, [dbc.Spinner(size='sm',show_initially=True),' Querying...']
 
 @app.callback(
     Output('search-term-hidden', 'value'),
