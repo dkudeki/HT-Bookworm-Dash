@@ -186,7 +186,7 @@ app.layout = html.Div([
                             style={'color': 'navy','font-weight':'bold'})],
                     className="form-group mb-3"
                 ),
-                html.Button([dbc.Spinner(size='sm',show_initially=True),' Querying...'], id='word_search_button', className='btn btn-primary', disabled=True),
+                html.Button([dbc.Spinner(size='sm',show_initially=True),' Querying...'], id='words_search_button', className='btn btn-primary', disabled=True),
                 html.Div(
                     [html.Label("Type of Map", className='mb-2'),
                      html.Div(dcc.RadioItems(
@@ -262,9 +262,9 @@ def display_click_data(clickData, word, compare_word, mapscope):
     return html.Ul(links)
 
 @app.callback(
-    Output('word_search_button','disabled'),
-    Output('word_search_button','children'),
-    Input('word_search_button', 'n_clicks'),
+    Output('words_search_button','disabled'),
+    Output('words_search_button','children'),
+    Input('words_search_button', 'n_clicks'),
     Input('main-map-graph', 'figure')
 )
 def update_button(n_clicks,figure):
@@ -276,7 +276,7 @@ def update_button(n_clicks,figure):
 
 @app.callback(
     Output('map-search-term-hidden', 'value'),
-    Input('word_search_button', 'n_clicks'),
+    Input('words_search_button', 'n_clicks'),
     State('search-term', 'value'),
     State('compare-term', 'value')
 )
