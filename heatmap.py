@@ -120,7 +120,7 @@ app.layout = html.Div([
                 ),
                 html.Div(
                     [html.Label("Facet by:",className='mb-2'),
-                     dcc.Dropdown(id='group-dropdown', options=facet_opts, value='lc_classes')
+                     dcc.Dropdown(id='group-dropdown', options=facet_opts, value='lc_classes', disabled=True)
                     ]
                 ),
                 html.Div(
@@ -245,16 +245,18 @@ def display_year(years):
 
 @app.callback(
     Output('word_search_button','disabled'),
+    Output('group-dropdown','disabled'),
     Output('word_search_button','children'),
     Input('word_search_button', 'n_clicks'),
+    Input('group-dropdown', 'value'),
     Input('main-heatmap-graph', 'figure')
 )
-def update_button(n_clicks,figure):
+def update_button(n_clicks,facet,figure):
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
     if context == 'main-heatmap-graph':
-        return False, "Update word"
+        return False, False, "Update word"
     else:
-        return True, [dbc.Spinner(size='sm',show_initially=True),' Querying...']
+        return True, True, [dbc.Spinner(size='sm',show_initially=True),' Querying...']
 
 @app.callback(
     Output('search-term-hidden', 'value'),
