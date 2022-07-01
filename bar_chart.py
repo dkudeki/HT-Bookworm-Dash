@@ -64,27 +64,28 @@ Select a field and see the raw counts in the Bookworm database
 
 controls = html.Div([
         dcc.Markdown(header),
-        html.Label("Facet Group"),
+        html.Label("Facet Group", className='mb-2'),
         dcc.Dropdown(id='group-dropdown', options=facet_opts, value='languages'),
         html.Label("Number of results to show"),
         dcc.Slider(id='trim-slider', min=10, max=60, value=20, step=5,
-                   marks={str(n): str(n) for n in range(10, 61, 10)}),
-        html.Label("Ignore unknown values:", style={'padding-top': '15px'}),
+                   marks={str(n): str(n) for n in range(10, 61, 10)}, className='py-0 px-0'),
+        html.Label("Ignore unknown values:", className='mb-2'),
         dcc.RadioItems(
             id='drop-radio',
             options=[
                 {'label': u'Yes', 'value': 'drop'},
                 {'label': u'No', 'value': 'keep'}
             ],
-            value='drop'
+            value='drop',
+            labelClassName='mb-2'
         ),
-        html.Label("Count by:"),
+        html.Label("Count by:", className='mb-2'),
         dcc.RadioItems(id='counttype-dropdown', options=[
                 {'label': u'# of Texts', 'value': 'TextCount'},
                 {'label': u'# of Words', 'value': 'WordCount'}
-            ], value='TextCount')
+            ], value='TextCount', labelClassName='mb-2')
     ],
-    className='col-md-3')
+    className='col-md-3 px-3')
 
 app.layout = html.Div([
     
