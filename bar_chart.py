@@ -66,7 +66,7 @@ controls = html.Div([
         dcc.Markdown(header),
         html.Label("Facet Group", className='mb-2'),
         dcc.Dropdown(id='group-dropdown', options=facet_opts, value='languages'),
-        html.Label("Number of results to show"),
+        html.Label("Number of results to show", className='mb-2'),
         dcc.Slider(id='trim-slider', min=10, max=60, value=20, step=5,
                    marks={str(n): str(n) for n in range(10, 61, 10)}, className='py-0 px-0'),
         html.Label("Ignore unknown values:", className='mb-2 pt-3'),
@@ -100,7 +100,7 @@ app.layout = html.Div([
              ],
             className='row')
 
-], className='container-fluid')
+], className='container-fluid px-3')
 
 @app.callback(
     Output('bar-chart-main-graph', 'figure'),
