@@ -1,6 +1,7 @@
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
+import dash_bootstrap_components as dbc
 import plotly
 import plotly.graph_objs as go
 from plotly import figure_factory as FF
