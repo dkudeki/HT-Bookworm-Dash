@@ -91,16 +91,16 @@ app.layout = html.Div([
     
     html.Div([
                 controls,
-                html.Div([dcc.Graph(id='bar-chart-main-graph', config=graphconfig)], className='col-md-9')
+                html.Div([dcc.Graph(id='bar-chart-main-graph', config=graphconfig)], className='col-md-9 px-3')
             ],
             className='row'),
     html.Div([
-                html.Div([html.H2("Data"), dcc.Graph(id='bar-data-table')], id='data-table', className='col-md-5'),
-                html.Div([dcc.Graph(id='date-distribution')], id='graph-wrapper', className='col-md-7')
+                html.Div([html.H2("Data"), dcc.Graph(id='bar-data-table')], id='data-table', className='col-md-5 px-3'),
+                html.Div([dcc.Graph(id='date-distribution')], id='graph-wrapper', className='col-md-7 px-3')
              ],
             className='row')
 
-], className='container-fluid px-3')
+], className='container-fluid')
 
 @app.callback(
     Output('bar-chart-main-graph', 'figure'),
