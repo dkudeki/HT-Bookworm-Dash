@@ -69,7 +69,7 @@ controls = html.Div([
         html.Label("Number of results to show"),
         dcc.Slider(id='trim-slider', min=10, max=60, value=20, step=5,
                    marks={str(n): str(n) for n in range(10, 61, 10)}, className='py-0 px-0'),
-        html.Label("Ignore unknown values:", className='mb-2'),
+        html.Label("Ignore unknown values:", className='mb-2 pt-3'),
         dcc.RadioItems(
             id='drop-radio',
             options=[
