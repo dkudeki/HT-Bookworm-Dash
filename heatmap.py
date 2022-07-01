@@ -144,7 +144,7 @@ app.layout = html.Div([
                         ),
                         html.Span(id='year-display')
                     ],
-                    className="form-group"
+                    className="form-group mb-3"
                 ),
                 html.Br()
             ],
