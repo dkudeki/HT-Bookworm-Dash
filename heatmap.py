@@ -280,11 +280,12 @@ def update_hidden_search_term(n_clicks, word, compare):
 @app.callback(
     Output('main-heatmap-graph', 'figure'),
     Input('search-term-hidden', 'value'),
-#    Input('group-dropdown', 'value'),
     Input("facet-values", "value"),
-    Input('year-slider', "value")
+    Input('year-slider', "value"),
+    State('group-dropdown', 'value')
 )
-def heatmap_search(word_query, facet, facet_query, years):
+#def heatmap_search(word_query, facet, facet_query, years):
+def heatmap_search(word_query, facet_query, years, facet):
     try:
         word_query=json.loads(word_query)
         word = word_query['word']
