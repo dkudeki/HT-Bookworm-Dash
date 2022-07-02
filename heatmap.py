@@ -251,8 +251,12 @@ def display_year(years):
     Output('group-dropdown','disabled'),
     Output('facet-values','disabled'),
     Output('word_search_button','children'),
-    Input('word_search_button', 'n_clicks'),
-    Input('group-dropdown', 'n_clicks'),
+    Input('search-term-hidden', 'value'),
+    Input('group-dropdown', 'value'),
+    Input("facet-values", "value"),
+    Input('year-slider', "value")
+#    Input('word_search_button', 'n_clicks'),
+#    Input('group-dropdown', 'n_clicks'),
 #    Input('facet-values','value')
     Input('main-heatmap-graph', 'figure')
 )
@@ -277,7 +281,7 @@ def update_hidden_search_term(n_clicks, word, compare):
 @app.callback(
     Output('main-heatmap-graph', 'figure'),
     Input('search-term-hidden', 'value'),
-    Input('group-dropdown', 'value'),
+#    Input('group-dropdown', 'value'),
     Input("facet-values", "value"),
     Input('year-slider', "value")
 )
