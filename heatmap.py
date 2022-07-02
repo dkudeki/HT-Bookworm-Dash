@@ -254,7 +254,7 @@ def display_year(years):
     Input('search-term-hidden', 'value'),
     Input('group-dropdown', 'value'),
     Input("facet-values", "value"),
-    Input('year-slider', "value")
+    Input('year-slider', "value"),
 #    Input('word_search_button', 'n_clicks'),
 #    Input('group-dropdown', 'n_clicks'),
 #    Input('facet-values','value')
