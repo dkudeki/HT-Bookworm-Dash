@@ -252,7 +252,7 @@ def display_year(years):
     Output('facet-values','disabled'),
     Output('word_search_button','children'),
     Input('word_search_button', 'n_clicks'),
-    Input('group-dropdown', 'value'),
+    Input('group-dropdown', 'n_clicks'),
 #    Input('facet-values','value')
     Input('main-heatmap-graph', 'figure')
 )
