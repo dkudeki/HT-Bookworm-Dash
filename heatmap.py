@@ -251,16 +251,15 @@ def display_year(years):
     Output('group-dropdown','disabled'),
     Output('facet-values','disabled'),
     Output('word_search_button','children'),
-    Input('search-term-hidden', 'value'),
+    Input('word_search_button', 'n_clicks'),
     Input('group-dropdown', 'value'),
     Input("facet-values", "value"),
     Input('year-slider', "value"),
-#    Input('word_search_button', 'n_clicks'),
 #    Input('group-dropdown', 'n_clicks'),
 #    Input('facet-values','value')
     Input('main-heatmap-graph', 'figure')
 )
-def update_button(n_clicks,facet,figure):
+def update_button(n_clicks,facet,facet_values,years,figure):
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
     logging.debug(dash.callback_context.triggered)
     logging.debug(context)
