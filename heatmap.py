@@ -144,7 +144,8 @@ app.layout = html.Div([
                             marks=None,
                             value=[default_min_year, default_max_year],
                             id='year-slider',
-                            className='py-0 px-0'
+                            className='py-0 px-0',
+                            disabled=True
                         ),
                         html.Span(id='year-display')
                     ],
@@ -250,10 +251,10 @@ def display_year(years):
     Output('word_search_button','disabled'),
     Output('group-dropdown','disabled'),
     Output('facet-values','disabled'),
+    Output('year-slider', 'disabled'),
     Output('word_search_button','children'),
     Input('word_search_button', 'n_clicks'),
     Input('group-dropdown', 'value'),
-    Input("facet-values", "value"),
     Input('year-slider', "value"),
 #    Input('group-dropdown', 'n_clicks'),
 #    Input('facet-values','value')
@@ -264,9 +265,9 @@ def update_button(n_clicks,facet,facet_values,years,figure):
     logging.debug(dash.callback_context.triggered)
     logging.debug(context)
     if context == 'main-heatmap-graph':
-        return False, False, False, "Update word"
+        return False, False, False, False, "Update word"
     else:
-        return True, True, True, [dbc.Spinner(size='sm',show_initially=True),' Querying...']
+        return True, True, True, True, [dbc.Spinner(size='sm',show_initially=True),' Querying...']
 
 @app.callback(
     Output('search-term-hidden', 'value'),
