@@ -260,7 +260,7 @@ def display_year(years):
 #    Input('facet-values','value')
     Input('main-heatmap-graph', 'figure')
 )
-def update_button(n_clicks,facet,facet_values,years,figure):
+def update_button(n_clicks,facet,years,figure):
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
     logging.debug(dash.callback_context.triggered)
     logging.debug(context)
