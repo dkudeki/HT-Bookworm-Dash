@@ -109,11 +109,14 @@ app.layout = html.Div([
     Input('bar-chart-main-graph', 'figure')
 )
 def show_processing(facet,figure):
-    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
-    if context == 'bar-chart-main-graph':
-        return False
-    else:
-        return True
+#    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
+#    logging.debug(context)
+    logging.debug(dash.callback_context.triggered)
+    return False
+#    if context == 'bar-chart-main-graph':
+#        return False
+#    else:
+#        return True
 
 @app.callback(
     Output('bar-chart-main-graph', 'figure'),
