@@ -103,16 +103,16 @@ app.layout = html.Div([
 
 ], className='container-fluid')
 
-@app.callback(
-    Output('group-dropdown', 'disabled'),
-    Input('group-dropdown', 'value')#,
+#@app.callback(
+#    Output('group-dropdown', 'disabled'),
+#    Input('group-dropdown', 'value')#,
 #    Input('bar-chart-main-graph', 'figure')
-)
-def show_processing(facet,figure):
+#)
+#def show_processing(facet,figure):
 #    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
 #    logging.debug(context)
-    logging.debug(dash.callback_context.triggered)
-    return False
+#    logging.debug(dash.callback_context.triggered)
+#    return False
 #    if context == 'bar-chart-main-graph':
 #        return False
 #    else:
