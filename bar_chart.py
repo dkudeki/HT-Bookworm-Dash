@@ -104,7 +104,7 @@ app.layout = html.Div([
 ], className='container-fluid')
 
 @app.callback(
-    Output('group-dropdown', 'disabled')
+    Output('group-dropdown', 'disabled'),
     Input('group-dropdown', 'value'),
     Input('bar-chart-main-graph', 'figure')
 )
