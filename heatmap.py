@@ -255,14 +255,10 @@ def display_year(years):
     Output('word_search_button','children'),
     Input('word_search_button', 'n_clicks'),
     Input('group-dropdown', 'value'),
-#    Input('group-dropdown', 'n_clicks'),
-#    Input('facet-values','value')
     Input('main-heatmap-graph', 'figure')
 )
 def update_button(n_clicks,facet,figure):
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
-    logging.debug(dash.callback_context.triggered)
-    logging.debug(context)
     if context == 'main-heatmap-graph':
         return False, False, False, False, "Update word"
     else:

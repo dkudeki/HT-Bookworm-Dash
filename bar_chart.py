@@ -105,8 +105,8 @@ app.layout = html.Div([
 
 @app.callback(
     Output('group-dropdown', 'disabled'),
-    Input('group-dropdown', 'value'),
-    Input('bar-chart-main-graph', 'figure')
+    Input('group-dropdown', 'value')#,
+#    Input('bar-chart-main-graph', 'figure')
 )
 def show_processing(facet,figure):
 #    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
