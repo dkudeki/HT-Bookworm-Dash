@@ -66,7 +66,7 @@ Select a field and see the raw counts in the Bookworm database
 controls = html.Div([
         dcc.Markdown(header),
         html.Label("Facet Group", className='mb-2'),
-        dcc.Dropdown(id='group-dropdown', options=facet_opts, value='languages', disabled=False),
+        dcc.Dropdown(id='bar-group-dropdown', options=facet_opts, value='languages', disabled=False),
         html.Label("Number of results to show", className='mb-2'),
         dcc.Slider(id='trim-slider', min=10, max=60, value=20, step=5,
                    marks={str(n): str(n) for n in range(10, 61, 10)}, className='py-0 px-0'),
@@ -105,7 +105,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output('bar-chart-main-graph', 'figure'),
-    Input('group-dropdown', 'value'),
+    Input('bar-group-dropdown', 'value'),
     Input('trim-slider', 'value'),
     Input('drop-radio', 'value'),
     Input('counttype-dropdown', 'value')
@@ -147,7 +147,7 @@ def update_figure(group, trim_at, drop_radio, counttype):
 
 @app.callback(
     Output('bar-data-table', 'figure'),
-    Input('group-dropdown', 'value'),
+    Input('bar-group-dropdown', 'value'),
     Input('drop-radio', 'value')
 )
 def update_table(group, drop_radio):
@@ -170,8 +170,8 @@ def update_table(group, drop_radio):
 #    Input('bar-chart-main-graph', 'figure')
 #def show_processing(facet,figure):
 @app.callback(
-    Output('group-dropdown', 'disabled'),
-    Input('group-dropdown', 'value'),
+    Output('bar-group-dropdown', 'disabled'),
+    Input('bar-group-dropdown', 'value'),
     Input('bar-chart-main-graph', 'figure')
 )
 def show_processing(facet, figure):
@@ -189,7 +189,7 @@ def show_processing(facet, figure):
 @app.callback(
     Output('date-distribution', 'figure'),
     Input('bar-chart-main-graph', 'hoverData'),
-    Input('group-dropdown', 'value')
+    Input('bar-group-dropdown', 'value')
 )
 def print_hover_data(clickData, group):
     if clickData:
