@@ -175,7 +175,8 @@ def update_table(group, drop_radio):
     Input('bar-chart-main-graph', 'figure')
 )
 def show_processing(facet, figure):
-    logging.debug(dash.callback_context)
+#    logging.debug(dash.callback_context)
+    logging.debug("Show Processing")
     return False
 #    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
 #    logging.debug(dash.callback_context.triggered)
