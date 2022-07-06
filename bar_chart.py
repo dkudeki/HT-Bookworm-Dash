@@ -167,16 +167,16 @@ def update_table(group, drop_radio):
         #        ]) for i in range(min(len(df), 100))]
     #)
 
+#    Input('bar-chart-main-graph', 'figure')
+#def show_processing(facet,figure):
 @app.callback(
     Output('group-dropdown', 'disabled'),
-    Input('group-dropdown', 'value')#,
-#    Input('bar-chart-main-graph', 'figure')
+    Input('group-dropdown', 'value')
 )
-#def show_processing(facet,figure):
 def show_processing(facet):
-#    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
     logging.debug(context)
     return False
+#    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
 #    logging.debug(dash.callback_context.triggered)
 #    return False
 #    if context == 'bar-chart-main-graph':
