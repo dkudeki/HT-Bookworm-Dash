@@ -171,10 +171,11 @@ def update_table(group, drop_radio):
 #def show_processing(facet,figure):
 @app.callback(
     Output('group-dropdown', 'disabled'),
-    Input('group-dropdown', 'value')
+    Input('group-dropdown', 'value'),
+    Input('bar-chart-main-graph', 'figure')
 )
-def show_processing(facet):
-    logging.debug(context)
+def show_processing(facet, figure):
+    logging.debug(dash.callback_context)
     return False
 #    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
 #    logging.debug(dash.callback_context.triggered)
