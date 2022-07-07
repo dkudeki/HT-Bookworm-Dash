@@ -126,10 +126,10 @@ def show_processing(facet):#, chart, table):
 
     if context == 'bar-group-dropdown' or len(context) == 0:
         logging.debug(context)
-        return True
+        return False
     else:
         logging.debug(context)
-        return False
+        return True
 #    if context == 'bar-chart-main-graph':
 #        return False
 #    else:
