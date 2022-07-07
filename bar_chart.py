@@ -114,8 +114,8 @@ def show_processing(facet, figure):
 #    logging.debug(dash.callback_context)
 #    logging.debug("Show Processing")
 #    return False
-    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
     logging.debug(dash.callback_context.triggered)
+    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
     if context == 'bar-chart-main-graph':
         return False
     else:
