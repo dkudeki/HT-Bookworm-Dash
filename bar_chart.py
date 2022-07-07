@@ -66,7 +66,7 @@ Select a field and see the raw counts in the Bookworm database
 controls = html.Div([
         dcc.Markdown(header),
         html.Label("Facet Group", className='mb-2'),
-        dcc.Dropdown(id='bar-group-dropdown', options=facet_opts, value='languages', disabled=True),
+        dcc.Dropdown(id='bar-group-dropdown', options=facet_opts, value='languages', disabled=False),
         html.Label("Number of results to show", className='mb-2'),
         dcc.Slider(id='trim-slider', min=10, max=60, value=20, step=5,
                    marks={str(n): str(n) for n in range(10, 61, 10)}, className='py-0 px-0'),
@@ -108,18 +108,19 @@ app.layout = html.Div([
 @app.callback(
     Output('bar-group-dropdown', 'disabled'),
     Input('bar-group-dropdown', 'value'),
-    Input('bar-chart-main-graph', 'figure')
+#    Input('bar-chart-main-graph', 'figure')
 )
-def show_processing(facet, figure):
+def show_processing(facet):#, figure):
 #    logging.debug(dash.callback_context)
 #    logging.debug("Show Processing")
 #    return False
     logging.debug(dash.callback_context.triggered)
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
-    if context == 'bar-chart-main-graph':
-        return False
-    else:
-        return True
+    return True
+#    if context == 'bar-chart-main-graph':
+#        return False
+#    else:
+#        return True
 
 @app.callback(
     Output('bar-chart-main-graph', 'figure'),
