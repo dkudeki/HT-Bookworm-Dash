@@ -188,7 +188,7 @@ def show_processing(facet, figure):
 @app.callback(
     Output('date-distribution', 'figure'),
     Input('bar-chart-main-graph', 'hoverData'),
-    Input('bar-group-dropdown', 'value')
+    State('bar-group-dropdown', 'value')
 )
 def print_hover_data(clickData, group):
     if clickData:
