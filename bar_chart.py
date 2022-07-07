@@ -107,10 +107,10 @@ app.layout = html.Div([
 @app.callback(
     Output('bar-group-dropdown', 'disabled'),
     Input('bar-group-dropdown', 'value'),
-    Input('bar-chart-main-graph', 'figure'),
-    Input('bar-data-table', 'figure')
+#    Input('bar-chart-main-graph', 'figure'),
+#    Input('bar-data-table', 'figure')
 )
-def show_processing(facet, chart, table):
+def show_processing(facet):#, chart, table):
 #    logging.debug(dash.callback_context)
 #    logging.debug("Show Processing")
 #    return False
