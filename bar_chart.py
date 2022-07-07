@@ -117,7 +117,7 @@ def show_processing(facet, chart, table):
     logging.debug("Show Processing")
     logging.debug(dash.callback_context.triggered)
     for element in dash.callback_context.triggered:
-        logging.debug(dash.callback_context.triggered[element]['prop_id'])
+        logging.debug(element['prop_id'])
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
 #    if len(context) > 0:
 #        return True
