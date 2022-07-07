@@ -116,7 +116,10 @@ def show_processing(facet):#, figure):
 #    return False
     logging.debug(dash.callback_context.triggered)
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
-    return True
+    if len(context) > 0:
+        return True
+    else:
+        return False
 #    if context == 'bar-chart-main-graph':
 #        return False
 #    else:
