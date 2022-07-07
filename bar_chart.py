@@ -103,6 +103,24 @@ app.layout = html.Div([
 
 ], className='container-fluid')
 
+#    Input('bar-chart-main-graph', 'figure')
+#def show_processing(facet,figure):
+@app.callback(
+    Output('bar-group-dropdown', 'disabled'),
+    Input('bar-group-dropdown', 'value'),
+    Input('bar-chart-main-graph', 'figure')
+)
+def show_processing(facet, figure):
+#    logging.debug(dash.callback_context)
+#    logging.debug("Show Processing")
+#    return False
+    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
+    logging.debug(dash.callback_context.triggered)
+    if context == 'bar-chart-main-graph':
+        return False
+    else:
+        return True
+
 @app.callback(
     Output('bar-chart-main-graph', 'figure'),
     Input('bar-group-dropdown', 'value'),
@@ -166,24 +184,6 @@ def update_table(group, drop_radio):
         #            html.Td(df.iloc[i][col]) for col in df.columns
         #        ]) for i in range(min(len(df), 100))]
     #)
-
-#    Input('bar-chart-main-graph', 'figure')
-#def show_processing(facet,figure):
-@app.callback(
-    Output('bar-group-dropdown', 'disabled'),
-    Input('bar-group-dropdown', 'value'),
-    Input('bar-chart-main-graph', 'figure')
-)
-def show_processing(facet, figure):
-#    logging.debug(dash.callback_context)
-#    logging.debug("Show Processing")
-#    return False
-    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
-    logging.debug(dash.callback_context.triggered)
-    if context == 'bar-chart-main-graph':
-        return False
-    else:
-        return True
 
 @app.callback(
     Output('date-distribution', 'figure'),
