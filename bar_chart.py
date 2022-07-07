@@ -114,6 +114,7 @@ def show_processing(facet, chart, table):
 #    logging.debug(dash.callback_context)
 #    logging.debug("Show Processing")
 #    return False
+    logging.debug("Show Processing")
     logging.debug(dash.callback_context.triggered)
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
 #    if len(context) > 0:
@@ -122,8 +123,10 @@ def show_processing(facet, chart, table):
 #        return False
 
     if context == 'bar-group-dropdown' or len(context) == 0:
+        logging.debug(context)
         return True
     else:
+        logging.debug(context)
         return False
 #    if context == 'bar-chart-main-graph':
 #        return False
