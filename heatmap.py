@@ -40,7 +40,7 @@ default_max_year = 2000
 
 header = '''
 # Bookworm Heatmap
-See where a word occurs across facets.
+See where a word occurs across facets in the 17 million volume [HathiTrust](https://www.hathitrust.org) collection.
 '''
 
 facet_opts = get_facet_group_options(bw_heatmap)

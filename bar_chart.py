@@ -60,13 +60,13 @@ def get_date_distribution(group, facet):
 
 header = '''
 # Bookworm Bar Chart
-Select a field and see the raw counts in the Bookworm database
+Select a field and see the raw counts in the Bookworm database of the 17 million volume [HathiTrust](https://www.hathitrust.org) collection.
 '''
 
 controls = html.Div([
         dcc.Markdown(header),
         html.Label("Facet Group", className='mb-2'),
-        dcc.Dropdown(id='bar-group-dropdown', options=facet_opts, value='languages', disabled=False),
+        dcc.Dropdown(id='bar-group-dropdown', options=facet_opts, value='languages'),
         html.Label("Number of results to show", className='mb-2'),
         dcc.Slider(id='trim-slider', min=10, max=60, value=20, step=5,
                    marks={str(n): str(n) for n in range(10, 61, 10)}, className='py-0 px-0'),
@@ -104,32 +104,32 @@ app.layout = html.Div([
 ], className='container-fluid')
 
 #def show_processing(facet,figure):
-@app.callback(
-    Output('bar-group-dropdown', 'disabled'),
-    Input('bar-group-dropdown', 'value'),
+#@app.callback(
+#    Output('bar-group-dropdown', 'disabled'),
+#    Input('bar-group-dropdown', 'value'),
 #    Input('bar-chart-main-graph', 'figure'),
 #    Input('bar-data-table', 'figure')
-)
-def show_processing(facet):#, chart, table):
+#)
+#def show_processing(facet):#, chart, table):
 #    logging.debug(dash.callback_context)
 #    logging.debug("Show Processing")
 #    return False
-    logging.debug("Show Processing")
-    logging.debug(dash.callback_context.triggered)
-    for element in dash.callback_context.triggered:
-        logging.debug(element['prop_id'])
-    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
+#    logging.debug("Show Processing")
+#    logging.debug(dash.callback_context.triggered)
+#    for element in dash.callback_context.triggered:
+#        logging.debug(element['prop_id'])
+#    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
 #    if len(context) > 0:
 #        return True
 #    else:
 #        return False
-
-    if context == 'bar-group-dropdown' or len(context) == 0:
-        logging.debug(context)
-        return False
-    else:
-        logging.debug(context)
-        return True
+#
+#    if context == 'bar-group-dropdown' or len(context) == 0:
+#        logging.debug(context)
+#        return False
+#    else:
+#        logging.debug(context)
+#        return True
 #    if context == 'bar-chart-main-graph':
 #        return False
 #    else:
