@@ -27,6 +27,18 @@ app.index_string = """<!DOCTYPE html>
 
 			gtag('config', 'G-Y6QBMH29BH');
 		</script>
+		{%metas%}
+		<title>{%title%}</title>
+		{%favicon%}
+		{%css%}
 	</head>
+	<body>
+		{%app_entry%}
+		<footer>
+			{%config%}
+			{%scripts%}
+			{%renderer%}
+		</footer>
+	</body>
 </html>
 """

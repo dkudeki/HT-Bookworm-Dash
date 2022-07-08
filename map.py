@@ -268,6 +268,8 @@ def display_click_data(clickData, word, compare_word, mapscope):
     Input('main-map-graph', 'figure')
 )
 def update_button(n_clicks,figure):
+    logging.debug("Update Button")
+    logging.debug(dash.callback_context.triggered)
     context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
     if context == 'main-map-graph':
         return False, "Update Words"
