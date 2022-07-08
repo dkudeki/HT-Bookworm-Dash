@@ -6,9 +6,7 @@ import dash
 import dash_bootstrap_components as dbc
 import bwypy
 
-external_scripts = [ 'https://www.googletagmanager.com/gtag/js?id=G-Y6QBMH29BH' ]
-
-app = dash.Dash(__name__,url_base_pathname='/app/',suppress_callback_exceptions=True,external_stylesheets=[dbc.themes.BOOTSTRAP],external_scripts=external_scripts,show_undo_redo=True)
+app = dash.Dash(__name__,url_base_pathname='/app/',suppress_callback_exceptions=True,external_stylesheets=[dbc.themes.BOOTSTRAP],show_undo_redo=True)
 
 app.css.append_css({
     "external_url" : "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
@@ -16,3 +14,31 @@ app.css.append_css({
 
 graphconfig = dict(displaylogo=False,
                  modeBarButtonsToRemove=['sendDataToCloud', 'hoverCompareCartesian'])
+
+app.index_string = """<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6QBMH29BH"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-Y6QBMH29BH');
+		</script>
+		{%metas%}
+		<title>{%title%}</title>
+		{%favicon%}
+		{%css%}
+	</head>
+	<body>
+		{%app_entry%}
+		<footer>
+			{%config%}
+			{%scripts%}
+			{%renderer%}
+		</footer>
+	</body>
+</html>
+"""
