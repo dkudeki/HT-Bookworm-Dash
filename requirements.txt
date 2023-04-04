@@ -24,4 +24,4 @@ requests==2.14.2
 six==1.10.0
 traitlets==4.3.2
 ujson==1.35
-Werkzeug==0.14
+Werkzeug==2.2.3
