@@ -186,7 +186,7 @@ app.layout = html.Div([
                             style={'color': 'navy','font-weight':'bold'})],
                     className="form-group mb-3"
                 ),
-                html.Button([dbc.Spinner(size='sm',show_initially=True),' Querying...'], id='words_search_button', className='btn btn-primary', disabled=True),
+                html.Button('Query', id='words_search_button', className='btn btn-primary', disabled=False),
                 html.Div(
                     [html.Label("Type of Map", className='mb-2'),
                      html.Div(dcc.RadioItems(
@@ -261,18 +261,18 @@ def display_click_data(clickData, word, compare_word, mapscope):
             raise
     return html.Ul(links)
 
-@app.callback(
-    Output('words_search_button','disabled'),
-    Output('words_search_button','children'),
-    Input('words_search_button', 'n_clicks'),
-    Input('main-map-graph', 'figure')
-)
-def update_button(n_clicks,figure):
-    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
-    if context == 'main-map-graph':
-        return False, "Update Words"
-    else:
-        return True, [dbc.Spinner(size='sm',show_initially=True),' Querying...']
+#@app.callback(
+#    Output('words_search_button','disabled'),
+#    Output('words_search_button','children'),
+#    Input('words_search_button', 'n_clicks'),
+#    Input('main-map-graph', 'figure')
+#)
+#def update_button(n_clicks,figure):
+#    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
+#    if context == 'main-map-graph':
+#        return False, "Update Words"
+#    else:
+#        return True, [dbc.Spinner(size='sm',show_initially=True),' Querying...']
 
 @app.callback(
     Output('map-search-term-hidden', 'value'),

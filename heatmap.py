@@ -116,13 +116,13 @@ app.layout = html.Div([
                     [
                         html.Label("Optional: Compare to another term", style={'display':'None'}),
                         dcc.Input(id='compare-term', type='hidden', value='colour'),
-                        html.Button([dbc.Spinner(size='sm',show_initially=True),' Querying...'], id='word_search_button', className='btn btn-primary', disabled=True),
+                        html.Button(' Query', id='word_search_button', className='btn btn-primary', disabled=False),
                     ],
                     className="form-group mb-3"
                 ),
                 html.Div(
                     [html.Label("Facet by:",className='mb-2'),
-                     dcc.Dropdown(id='group-dropdown', options=facet_opts, value='lc_classes', disabled=True)
+                     dcc.Dropdown(id='group-dropdown', options=facet_opts, value='lc_classes', disabled=False)
                     ]
                 ),
                 html.Div(
@@ -130,7 +130,7 @@ app.layout = html.Div([
                         options=[],
                         multi=True,
                         id="facet-values",
-                        disabled=True
+                        disabled=False
                     )]
                 ),
                 html.Div(
@@ -145,7 +145,7 @@ app.layout = html.Div([
                             value=[default_min_year, default_max_year],
                             id='year-slider',
                             className='py-0 px-0',
-                            disabled=True
+                            disabled=False
                         ),
                         html.Span(id='year-display')
                     ],
@@ -247,22 +247,22 @@ def display_click_data(clickData, word_query, facet):
 def display_year(years):
     return "%d - %d" % tuple(years)
 
-@app.callback(
-    Output('word_search_button','disabled'),
-    Output('group-dropdown','disabled'),
-    Output('facet-values','disabled'),
-    Output('year-slider', 'disabled'),
-    Output('word_search_button','children'),
-    Input('word_search_button', 'n_clicks'),
-    Input('group-dropdown', 'value'),
-    Input('main-heatmap-graph', 'figure')
-)
-def update_button(n_clicks,facet,figure):
-    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
-    if context == 'main-heatmap-graph':
-        return False, False, False, False, "Update word"
-    else:
-        return True, True, True, True, [dbc.Spinner(size='sm',show_initially=True),' Querying...']
+#@app.callback(
+#    Output('word_search_button','disabled'),
+#    Output('group-dropdown','disabled'),
+#    Output('facet-values','disabled'),
+#    Output('year-slider', 'disabled'),
+#    Output('word_search_button','children'),
+#    Input('word_search_button', 'n_clicks'),
+#    Input('group-dropdown', 'value'),
+#    Input('main-heatmap-graph', 'figure')
+#)
+#def update_button(n_clicks,facet,figure):
+#    context = dash.callback_context.triggered[0]['prop_id'].split('.')[0]
+#    if context == 'main-heatmap-graph':
+#        return False, False, False, False, "Update word"
+#    else:
+#        return True, True, True, True, [dbc.Spinner(size='sm',show_initially=True),' Querying...']
 
 @app.callback(
     Output('search-term-hidden', 'value'),
